@@ -13,27 +13,9 @@ package variable;
 Data Type에서 표현에 대한 종류는 크게 정수형(int, short, byte, long), 실수형(float, double), 문자형(char), 논리형(boolean)으로 구분된다.
 Data Type에서 저장 방식에 대한 종류는 Primitive Type(기본 타입)과 Reference Type(참조 타입)으로 구분된다.
 정수형, 실수형, 문자형, 논리형은 Primitive Type 이고 나머지는 모두 Reference Type 이다.
-Primitive Type은 실제 data를 저장하고, Reference Type는 data가 저장된 주소를 저장한다.
+Primitive Type은 실제 data를 저장하고, Reference Type는 data가 저장된 객체의 주소를 저장한다.
 문자형인 char는 문자를 내부적으로 정수(Unicode)로 자장하기 때문에 정수형고 별반 다르지 않아, 정수형과 실수형과의 연산도 가능하다.
 논리형인 boolean 다른 primitive type과의 연산은 불가능하다.
-
-아래는 타입에 따른 byte 크기이다. (현재는 1byte는 8bit)
-boolean: 1 byte
-char: 2 byte
-byte: 1 byte
-short: 2 byte
-int: 4 byte (2^8/2 -> 음수, 0, 자연수 포함하면, 표현할 수 있는 정수의 범위는  2^7 ~ 2^7-1 이다.)
-long: 8 byte (2^63 ~ 2^63-1)
-float: 4 byte (소수점 7번째 자리수 까진 정확하게 계산 가능)
-double: 8 byte (float보다 메모리 공간 double, 소수점 15번째 자리수 까진 정확하게 계산 가능하여 float보다 정확하므로 더 많이 사용한다.)
-
-정수형은 가장 많이 사용되어, 4가지 타입이 존재한다.
-각 타입마다 저장할 수 있는 공간이 다르므로, 저장할 값의 범위에 맞는 타입을 선택하면 좋을 것이다.
-일반적으로 정수형에서는 int를 사용한다. 왜냐하면, CPU 친화적이기 때문이다.
-CPU 32bit 아키텍처에서는 4byte로 명령어가 표현되며, 64bit 아키텍처에서는 8byte로 표현된다.
-따라서 int형은 4yte로 한번에 CPU 명령어가 저장되거나, 두개의 CPU 명령어가 저장되어 효율적으로 처리할 수 있다.
-하지만 메모리 절약이 필요하다면, 메모리 공간 만큼 맞추서 타입을 지정하는 것이 좋겠다.
-
  */
 
 public class Var {
@@ -67,17 +49,45 @@ public class Var {
         자바에서는 이와 같은 상황을 방지하기 위해, 초기화 하지 않은 변수를 읽을시에 위와 같은 에러가 발생되도록 개발되었다.
         위의 에러는 컴파일시에 발생하여 class 파일로 변환되지 않는다.
          */
+        int num;
+        System.out.println(num);
 
-        // 아래의 변수들은 primitive type이다. data
-        // 아래 처럼, 개발자가 고정된 값이 literal이라 한다. 따라서 변수의 값은 변하지만, literal 자체는 변하지 않는다.
+        /*
+        아래는 primitive type variable이며, type에 따른 byte 크기이다. (현재는 1byte는 8bit)
+        boolean: 1 byte
+        char: 2 byte
+        byte: 1 byte
+        short: 2 byte
+        int: 4 byte (2^8/2 -> 음수, 0, 자연수 포함하면, 표현할 수 있는 정수의 범위는  2^7 ~ 2^7-1 이다.)
+        long: 8 byte (2^63 ~ 2^63-1)
+        float: 4 byte (소수점 7번째 자리수 까진 정확하게 계산 가능)
+        double: 8 byte (float보다 메모리 공간 double, 소수점 15번째 자리수 까진 정확하게 계산 가능하여 float보다 정확하므로 더 많이 사용한다.)
+
+        아래와 같이, int a = 10을 보면 고정한 값을 literal이라 한다. 따라서 변수의 값은 변하지만, literal 자체는 변하지 않는다.
+        또한 int(정수형)은 가장 많이 사용되어, 4가지 타입이 존재한다.
+        각 타입마다 저장할 수 있는 공간이 다르므로, 저장할 값의 범위에 맞는 타입을 선택하면 좋을 것이다.
+        일반적으로 정수형에서는 int를 사용한다. 왜냐하면, CPU 친화적이기 때문이다.
+        CPU 32bit 아키텍처에서는 4byte로 명령어가 표현되며, 64bit 아키텍처에서는 8byte로 표현된다.
+        따라서 int형은 4yte로 한번에 CPU 명령어가 저장되거나, 두개의 CPU 명령어가 저장되어 효율적으로 처리할 수 있다.
+        하지만 메모리 절약이 필요하다면, 메모리 공간 만큼 맞추서 타입을 지정하는 것이 좋겠다.
+         */
         int a = 10;
         char b = 'a';
         double c = 3.14;
         float d = 3.14f;
         boolean e = true;
 
-        // String만 대문자 인데, 이는 class이다.
-        // class는 reference type이므로, Stack 영역의 변수는 Heap 영역에 저장되어있는 객체의 주소를 가리킨다.
+        /*
+        String만 대문자 인데, 이는 class이다.
+        class는 reference type이므로, Stack 영역의 변수는 Heap 영역에 저장되어있는 객체의 주소를 가리킨다.
+        아래의 String str1와 같이 참조형 변수(Reference Type Variable)는 data가 저장된 객체의 주소를 저장한다.
+        JVM은 자바 가상 메모리 이므로, JVM가 32/64bit에 따라 참조형 변수의 크기가 달라진다.
+        여기서 32/64bit란 CPU가 한번에 처리할 수 있는 레지스터의 크기이다. 32bit일 경우에 참조형 변수의 크기는 4byte이고, 64bit일 경우에 8byte이다.
+
+        CPU 내부 레지스터(Register) 기억장치 한번에 처리하는 레지스터 크기를 32bit, 64bit이란 것을 뜻한다.
+        Physcial Register(실제 레지스터)중에서는 MAR(Meomory Address Register) 레지스터에 CPU가 데이터를 읽거나 쓰려는 메모리 주소를 일시적으로 저장한다.
+        JVM의 메모리 구조에서 Stack에 참조형 변수의 메모리 주소가 저장되고, Heap 영역을 가리키고 있다. 따라서 스택 영역은 32나 64bit 단위로 분할된다.
+         */
         String str1 = "hello";
         String str11 = "hello";
         String str2 = "halo";
@@ -108,7 +118,7 @@ public class Var {
             System.out.println("newStr1 != newStr2");
         }
 
-        // Reference Type은 4byte의 객체의 주소 또는 null을 값으로 가질 수 있다.
+        // Reference Type은 객체의 주소 또는 null을 값으로 가질 수 있다.
         // null은 어떠한 객체의 주소도 저장되지 않는다는 것을 뜻한다.
         newStr1 = null;
         System.out.println(newStr1);
