@@ -2,7 +2,6 @@ package variable;
 /*
 자바에서는 클래스들을 패키지로 구성하여 관리한다.
 패키지는 클래스들을 논리적으로 그룹화하고 네임스페이스를 제공하는 방법이다.
-이렇게 패키징하면, Main.java 함수를 실행시켜도 패키지에 존재하는 모든 클래스를 실행시킨다.
  */
 
 /*
@@ -49,8 +48,8 @@ public class Var {
         자바에서는 이와 같은 상황을 방지하기 위해, 초기화 하지 않은 변수를 읽을시에 위와 같은 에러가 발생되도록 개발되었다.
         위의 에러는 컴파일시에 발생하여 class 파일로 변환되지 않는다.
          */
-        int num;
-        System.out.println(num);
+//        int num;
+//        System.out.println(num);
 
         /*
         아래는 primitive type variable이며, type에 따른 byte 크기이다. (현재는 1byte는 8bit)
