@@ -26,7 +26,9 @@ public class Var {
         변수의 이름으로 해당 메모리 공간에 저장된 데이터를 읽을 수 있다.
          */
         char ch = 'd'; // [type] [naming] = [data] (= 대입연산자는 오른쪽 데이터를 왼쪽(변수 등)에 저장하라는 뜻)
+        int i = 'A'; // 'A'는 유니코드로 정수 65이므로, 타입이 달라도 저장된다.
         System.out.println(ch);
+        System.out.println(i);
 
         int x = 10;
         int y = 20;
