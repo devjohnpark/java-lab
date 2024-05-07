@@ -1,12 +1,27 @@
 package floatingPoint;
 
 public class FloatingPoint {
+    public static String numToBits(Number number) {
+        String strBits = "unknown";
+        if (number instanceof Double) { // 8bit
+            double d = (double) number;
+            long bits = Double.doubleToLongBits(d);
+            strBits = String.format("%64s", Long.toBinaryString(bits)).replace(' ', '0');
+        } else if (number instanceof Float) { // 16bit
+            float f = (float) number;
+            int bits = Float.floatToIntBits(f);
+            strBits = String.format("%32s", Integer.toBinaryString(bits)).replace(' ', '0');
+        }
+        return strBits;
+    }
+
     public static void main(String[] args) {
         float floatValue = -112.8125f;
         System.out.println(floatValue);
 
         int intValue = Float.floatToIntBits(floatValue);
         String binaryString = Integer.toBinaryString(intValue);
+        System.out.println("binaryString: " + binaryString);
         binaryString = String.format("%32s", binaryString).replace(' ', '0');
 
         System.out.println("Float value: " + floatValue); // 1.4E-45
@@ -24,8 +39,8 @@ public class FloatingPoint {
 
         // 지수부 비트 추출
         float f = 0.8125f;
-        int exponentBits = Float.floatToIntBits(f);
-        System.out.println(exponentBits);
+        int exponentBits = Float.floatToIntBits(f); // float 타입을 값을 int 타입의 값으로 해석하여 반환
+        System.out.println("exponentBits " + exponentBits); // 0 01111110 01000000000000000000000 비트를 1063883029 정수로 출력
         int exponent = (exponentBits >>> 23) & 0xFF; // 8비트가 모두 1로 이루어진 값인, 0xFF와 AND 연산하여 지수부 비트 추출
         System.out.println("Float.MAX_VALUE의 지수부: " + (exponent - 127)); // 0.1101에서 1.101 x 2^-1으로 표현하여, 지수는 -1이다.
 
