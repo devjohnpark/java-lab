@@ -14,6 +14,9 @@ public class Integers {
         } else if (number instanceof Integer) { // 32bit
             int intValue = (int) number;
             strBits = String.format("%32s", Integer.toBinaryString(intValue & 0xFFFFFFFF)).replace(' ', '0');
+        } else if (number instanceof Long) {
+            long longValue = (long) number;
+            strBits = String.format("%64s", Long.toBinaryString(longValue)).replace(' ', '0');
         }
         return strBits;
     }

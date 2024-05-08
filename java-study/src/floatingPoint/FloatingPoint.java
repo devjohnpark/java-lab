@@ -15,6 +15,34 @@ public class FloatingPoint {
         return strBits;
     }
 
+    public static String numToExponentBits(Number number) {
+        String strBits = "unknown";
+        if (number instanceof Double) { // 8bit
+            double d = (double) number;
+            long bits = Double.doubleToLongBits(d);
+            strBits = String.format("%64s", Long.toBinaryString(bits)).replace(' ', '0');
+        } else if (number instanceof Float) { // 16bit
+            float f = (float) number;
+            int bits = Float.floatToIntBits(f);
+            strBits = String.format("%32s", Integer.toBinaryString(bits)).replace(' ', '0');
+        }
+        return strBits;
+    }
+
+    public static String numToMantissaBits(Number number) {
+        String strBits = "unknown";
+        if (number instanceof Double) { // 8bit
+            double d = (double) number;
+            long bits = Double.doubleToLongBits(d);
+            strBits = String.format("%64s", Long.toBinaryString(bits)).replace(' ', '0');
+        } else if (number instanceof Float) { // 16bit
+            float f = (float) number;
+            int bits = Float.floatToIntBits(f);
+            strBits = String.format("%32s", Integer.toBinaryString(bits)).replace(' ', '0');
+        }
+        return strBits;
+    }
+
     public static void main(String[] args) {
         float floatValue = -112.8125f;
         System.out.println(floatValue);

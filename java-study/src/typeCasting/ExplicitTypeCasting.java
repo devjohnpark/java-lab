@@ -1,8 +1,6 @@
 package typeCasting;
 
-import integers.Integers;
-
-public class TypeCasting {
+public class ExplicitTypeCasting {
     public static void main(String[] args) {
         double d = 65.1;
 
