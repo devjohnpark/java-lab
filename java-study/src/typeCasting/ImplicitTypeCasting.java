@@ -1,6 +1,6 @@
 package typeCasting;
 
-public class ImplictTypeCasting {
+public class ImplicitTypeCasting {
     public static void main(String[] args) {
 
         float f = 11111111; // (float) 123 생략
