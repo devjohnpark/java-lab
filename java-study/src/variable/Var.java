@@ -54,7 +54,8 @@ public class Var {
         float d = 3.14f;
         boolean e = true;
         /*
-        String만 대문자 인데, 이는 class이다.
+        String만 대문자 인데, 이는 class이다. 허나 char 배열과 같은 뜻이며, 문자를 나열한 것이다.
+        C언어는 char 배열으로만 문자열을 표현하지만, 문자열은 개발할때 아주 빈번히 쓰임으로 자바에서는 String을 클래스로 만들어 여러 기능(메소드)를 추가하였다.
         class는 reference type이므로, Stack 영역의 변수는 Heap 영역에 저장되어있는 객체의 주소를 가리킨다.
         아래의 String str1와 같이 참조형 변수(Reference Type Variable)는 data가 저장된 객체의 주소를 저장한다.
         JVM은 자바 가상 머신 이므로, JVM이 32/64bit에 따라 참조형 변수의 크기가 달라진다.

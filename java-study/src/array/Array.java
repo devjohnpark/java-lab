@@ -69,7 +69,28 @@ public class Array {
 
         char[] arr5 = {'A', 'B', 'C', 'D', 'E', 'F'};
 
-        // char 타입은 다른 타입의 배열과 다르게, 참조 변수로 배열 모든 값 출력 가능
+        // String 타입의 변수는 char 배열과 같은 뜻이며, 문자를 나열한 것이다.
+        // 따라서 char 타입은 다른 타입의 배열과 다르게, 참조 변수로 배열 모든 값 출력 가능
         System.out.println(arr5);
+
+
+        // String만 대문자 인데, 이는 class이다. 허나 char 배열과 같은 뜻이며, 문자를 나열한 것이다.
+        // C언어는 char 타입 배열으로만 문자열을 표현하지만, 문자열은 개발할때 아주 빈번히 쓰인다.
+        // 객체지향언어인 자바에서는 char 배열에 그에 관련된 메소드(기능)들을 묶어서 추가하여 String 클래스로 정의하였다.
+        String str = "hello";
+        char ch = str.charAt(0);
+        System.out.printf("%c\n", ch);
+
+        String temp = str.substring(2, 4);
+        System.out.println(temp);
+
+        // char -> String
+        char[] chArr = { 'A', 'B', 'C', 'D', 'E', 'F' };
+        String str2 = new String(chArr);
+        System.out.println(str2);
+
+        // String -> char
+        char[] chArr2 = str2.toCharArray();
+        System.out.println(chArr2);
     }
 }
