@@ -17,16 +17,8 @@ public class Array {
         // 생성된 배열은 연속적인 메모리 공간에 저장되어 있다.
         int[] arr = new int[5]; // 0으로 최기화
         System.out.println(arr); // [I@2a84aee7: 타입@주소 (I는 1차원 int 배열, @ 뒤부터는 16진수로 표현된 배열의 주소이며 실제 주소가 아닌 내부 주소이다.)
-
-        // 길이가 0인 배열 생성
-        int[] x = new int[0];
-        int[] x1 = new int[]{};
-        int[] x2 = {};
-
-        System.out.printf("%d %d %d", x.length, x1.length, x2.length);
-
         /*
-        자바에서의 내부 주소는 보통 객체에 대한 고유 식별자이며, 이는 객체가 메모리 상의 위치를 나타내는 것이 아니라
+        자바에서의 내부 주소는 보통 객체에 대한 고유 식별자이며, 이는 객체의 메모리 상의 위치를 나타내는 것이 아니라
         JVM이 객체를 추적하고 관리하기 위해 사용하는 값이다.
         이 내부 주소는 일반적으로 해시 코드나 다른 식별자로 표현되며, 실제 메모리 주소와는 별개이다.
         자바에서의 내부 주소는 실제 메모리 주소와 다른 개념이며, 메모리 관리 및 가상화를 위해 사용된다.
@@ -34,6 +26,21 @@ public class Array {
         for (int i = 0; i < arr.length; i++) {
             System.out.printf("%d\n", arr[i]);
         }
+
+        // 길이가 0인 배열 생성
+        int[] x = new int[0];
+        int[] x1 = new int[]{};
+        int[] x2 = {};
+
+        System.out.printf("%d %d %d\n", x.length, x1.length, x2.length);
+
+//        Index 0 out of bounds for length 0
+//        x[0] = 1;
+//        x1[0] = 1;
+//        x2[0] = 1;
+
+
+//        System.out.printf("%d, %d, %d\n", x[0], x1[0], x2[0]);
 
         // JVM이 배열 길이를 관리하고, 배열 크기는 정적으로 고정되어 크기 변경이 불가하다. 그러므로 베열의 length는 상수이며, 변경 못한다.
         // 따라서 배열의 크기를 늘리고 싶은 경우, 더 큰 길이의 새로운 배열을 생성하여 복사해줘야한다.
@@ -70,7 +77,7 @@ public class Array {
         char[] arr5 = {'A', 'B', 'C', 'D', 'E', 'F'};
 
         // String 타입의 변수는 char 배열과 같은 뜻이며, 문자를 나열한 것이다.
-        // 따라서 char 타입은 다른 타입의 배열과 다르게, 참조 변수로 배열 모든 값 출력 가능
+        // 따라서 char 타입은 다른 타입의 배열과 다르게, 참조 변수로 배열 모든 값 한번에 출력 가능
         System.out.println(arr5);
 
 

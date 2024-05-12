@@ -24,12 +24,16 @@ public class StringArray {
             System.out.println(name3[i]);
         }
 
-        // String 객체는 쓰기가 불가능하다. 왜냐하면 초기값이 저장될때 해당 메모리 공간만큼 할당되기 때문에
+        // String 객체는 쓰기가 불가능하다. 왜냐하면 초기값이 저장될때 해당 메모리 공간만큼 할당되기 때문이다. (char 배열과 동일)
         String str = "junseo";
-        System.out.println(str.hashCode());
+        String tmp = str;
 
         str = str + "park";
 
-        System.out.println(str.hashCode());
+        if (tmp == str) {
+            System.out.println("str1과 str2는 같은 객체를 가리킴");
+        } else {
+            System.out.println("str1과 str2는 다른 객체를 가리킴");
+        }
     }
 }
