@@ -42,20 +42,31 @@ public class ObjectOriendtedProgramming {
             System.out.printf("raridus: %f, tire: %s\n", wheel.getWheelRadius(), wheel.getWheelTire());
         }
 
+        // 인스턴스 참조변수 배열 선언과 생성
         Wheel[] wheels = new Wheel[4];
 
-//        Java의 향상된 for문은 배열을 요소 값을 변수(wheel)에 저장한다. 따라서 배열의 요소를 직접 수정 불가능
-//        for (Wheel wheel : wheels) {
-//            wheel = new Wheel(50, Tire.한국타이어);
-//        }
-
+// 인스턴스 선언과 생성 및 배열의 참조변수 요소에 각각 저장
         for (int i = 0; i < wheels.length; i++) {
             wheels[i] = new Wheel(50, Tire.한국타이어);
         }
 
-        Vehicle vehicle = new Vehicle("Car", wheels);
-        vehicle.printInfo();
+        //        Java의 향상된 for문은 배열을 요소 값을 변수(wheel)에 저장한다. 따라서 배열의 요소를 직접 수정 불가능
+//        for (Wheel wheel : wheels) {
+//            wheel = new Wheel(50, Tire.한국타이어);
+//        }
 
-//        vehicle.replaceOneWheel(1, );
+        Car car = new Car();
+        // Car car; // 클래스 객체를 참조하기 위한 변수 선언
+        // car = new Car(); // 클래스 객체 생성 후, 객체의 주소 변수에 저장
+
+        car.engine = "V8";
+        car.wheels = wheels;
+        car.printInfo();
+
+        Car car1 = new Car();
+        Car car2 = new Car();
+        car1 = car2;
+
+
     }
 }

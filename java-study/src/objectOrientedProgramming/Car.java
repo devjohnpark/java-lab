@@ -1,24 +1,28 @@
 package objectOrientedProgramming;
 
-public class Vehicle {
-    private final String vehicleType;
-    private Wheel[] wheels;
+public class Car {
+    // member variables
+    static double maxEmission = 4.6;
+    S engine;
+    Wheel[] wheels;
 
-    public Vehicle(String vehicleType, Wheel[] wheels) {
-        this.vehicleType = vehicleType;
-        this.wheels = wheels;
-    }
+//    // constructor
+//    public Car(String engine, Wheel[] wheels) {
+//        this.engine = engine;
+//        this.wheels = wheels;
+//    }
 
-    public Wheel[] getWheels() {
+    // methods
+    Wheel[] getWheels() {
         return wheels;
     }
 
-    public void printInfo() {
-        System.out.println("Vehicle Type: " + vehicleType);
+    void printInfo() {
+        System.out.println("Car Engine: " + engine);
         System.out.printf("Wheels Tire %s and Radius %f \n", wheels[0].getWheelTire(), wheels[0].getWheelRadius());
     }
 
-    public void replaceOneWheel(int index, Wheel newWheel) {
+    void replaceOneWheel(int index, Wheel newWheel) {
         if (isValidIndex(index)) {
             if (isSameRadius(index, newWheel)) {
                 wheels[index] = newWheel;
@@ -30,11 +34,11 @@ public class Vehicle {
         }
     }
 
-    private boolean isValidIndex(int index) {
+    boolean isValidIndex(int index) {
         return index >= 0 && index < wheels.length;
     }
 
-    private boolean isSameRadius(int index, Wheel newWheel) {
+    boolean isSameRadius(int index, Wheel newWheel) {
         return wheels[index].getWheelRadius() == newWheel.getWheelRadius();
     }
 }
