@@ -9,7 +9,6 @@ public class Array {
         System.out.println(Arrays.toString(arr));
     }
     public static void main(String[] args) {
-
         // 배열은 같은 타입의 여러 변수를 하나의 묶음으로 다룬다.
         // int[] arr; -> int 타입 배열을 다루기 위함 참조 변수 선언;
         // arr = new int[5]; -> new 연산자를 통하여 배열 생성 (요구되는 메모리 공간 만큼 확보)
@@ -46,38 +45,39 @@ public class Array {
         // 따라서 배열의 크기를 늘리고 싶은 경우, 더 큰 길이의 새로운 배열을 생성하여 복사해줘야한다.
         System.out.printf("arr length: %d\n", arr.length);
 
-        int[] arr2 = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-        System.out.println(Arrays.toString(arr2));
-
-        // array copy
-        int[] tmp = new int[arr2.length * 2];
-        for (int i = 0; i < arr2.length; i++) {
-            tmp[i] = arr2[i];
+        // for loop -> array copy
+        int[] original = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        int[] copy = new int[original.length * 2];
+        for (int i = 0; i < original.length; i++) {
+            copy[i] = original[i];
         }
-        arr2 = tmp; // 배열 주소 변경하여, 새로운 배열을 가리켜 기존 arr2의 배열 크기에서 2배 증가됨
+        original = copy; // 배열 주소 변경하여, 새로운 배열을 가리켜 기존 original의 배열 크기에서 2배 증가됨
 
         // Arrays.toString(): 배열의 모든 요소를 출력
-        System.out.printf("%s %d\n", Arrays.toString(arr2), arr2.length);
+        System.out.printf("for loop -> array copy %s %d\n", Arrays.toString(original), original.length);
 
-        int[] arr3 = {11, 22, 33};
-        int[] tmp2 = new int[arr3.length*2];
+        // System.arraycopy() -> array copy
+        int[] original2 = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        int[] copy2 = new int[original2.length*2];
 
         // for문은 배열의 요소 값에 하나 하나 접근하지만, System.arraycopy는 한번에 복사하여 for 문보다 더 빠르고 간편하게 복사
         // 배열은 연속적으로 저장된 값이기 때문에 범위를 알고 있어, System.arraycopy는 지정된 범위의 값을 한번에 복사하여 처리한다.
-        System.arraycopy(arr3, 0, tmp2, 0, arr3.length);
-        System.out.printf("%s %d\n", Arrays.toString(tmp2), tmp2.length);
+        System.arraycopy(original2, 0, copy2, 0, original2.length);
+        System.out.printf("System.arraycopy() -> array copy %s %d\n", Arrays.toString(copy2), copy2.length);
 
-        int[] arr4 = {11, 22, 33};
-        int[] tmp3 = new int[arr4.length];
-        tmp3 = Arrays.copyOfRange(arr4, 0, arr4.length);
-        tmp3[1] = 100;
-        System.out.println(Arrays.toString(arr4));
-        System.out.println(Arrays.toString(tmp3));
+        // Arrays.copyOfRange() -> array copy
+        int[] original3 = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        int[] copy3 = new int[original3.length*2];
+        copy3 = Arrays.copyOfRange(original3, 0, original3.length*2);
+        System.out.printf("Arrays.copyOfRange() -> array copy %s %d\n", Arrays.toString(copy3), copy3.length);
+        int[] arr2 = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        System.out.println(Arrays.toString(arr2));
 
-        char[] arr5 = {'A', 'B', 'C', 'D', 'E', 'F'};
+
 
         // String 타입의 변수는 char 배열과 같은 뜻이며, 문자를 나열한 것이다.
         // 따라서 char 타입은 다른 타입의 배열과 다르게, 참조 변수로 배열 모든 값 한번에 출력 가능
+        char[] arr5 = {'A', 'B', 'C', 'D', 'E', 'F'};
         System.out.println(arr5);
 
 
@@ -93,7 +93,7 @@ public class Array {
 
         // char -> String
         char[] chArr = { 'A', 'B', 'C', 'D', 'E', 'F' };
-        String str2 = new String(chArr);
+        String str2 = new String(chArr); // chArr 모든 배열값 복사한 문자열 저장
         System.out.println(str2);
 
         // String -> char
