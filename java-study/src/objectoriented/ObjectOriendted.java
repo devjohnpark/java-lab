@@ -1,6 +1,6 @@
-package objectOrientedProgramming;
+package objectoriented;
 
-public class ObjectOriendtedProgramming {
+public class ObjectOriendted {
     public static void main(String[] args) {
         Wheel wheel1 = new Wheel(10, Tire.금호타이어);
         wheel1.changeTire(Tire.한국타이어);
@@ -55,18 +55,26 @@ public class ObjectOriendtedProgramming {
 //            wheel = new Wheel(50, Tire.한국타이어);
 //        }
 
-        Car car = new Car();
-        // Car car; // 클래스 객체를 참조하기 위한 변수 선언
-        // car = new Car(); // 클래스 객체 생성 후, 객체의 주소 변수에 저장
+        Engine engine = new GasolineEngine(500);
 
-        car.engine = "V8";
-        car.wheels = wheels;
-        car.printInfo();
+        Car car = new Car(Manufacturer.MERCEDES_BENZ, engine, wheels);
+        car.displayInfo();
 
-        Car car1 = new Car();
-        Car car2 = new Car();
-        car1 = car2;
-
+//        Car car = new Car(Manufacturer.BMW, );
+//        // Car car; // 클래스 객체를 참조하기 위한 변수 선언
+//        // car = new Car(); // 클래스 객체 생성 후, 객체의 주소 변수에 저장
+//
+//        car.engine = new GasolineEngine(200);
+//        car.wheels = wheels;
+//        car.printInfo();
+//
+//        Car car1 = new Car();
+//        Car car2 = new Car();
+//        car1 = car2;
+        System.out.println(VariablesMethods.classVariable);
+        VariablesMethods vm = new VariablesMethods();
+        VariablesMethods.classVariable = 100;
+        System.out.println(vm.classVariable);
 
     }
 }

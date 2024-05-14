@@ -1,4 +1,4 @@
-package objectOrientedProgramming;
+package objectoriented;
 
 public class Wheel {
     private final double radius;
