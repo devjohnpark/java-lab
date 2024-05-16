@@ -39,5 +39,8 @@ public class StringArray {
         } else {
             System.out.println("str과 tmp는 다른 객체를 가리킴");  // str과 tmp는 다른 객체를 가리킴
         }
+
+        StringBuffer sb = new StringBuffer();
+
     }
 }

@@ -65,6 +65,9 @@ public class Var {
         Physcial Register(실제 레지스터)중에서는 MAR(Meomory Address Register) 레지스터에 CPU가 데이터를 읽거나 쓰려는 메모리 주소를 일시적으로 저장한다.
         JVM의 메모리 구조에서 Stack에 참조형 변수의 메모리 주소가 저장되고, Heap 영역을 가리키고 있다. 따라서 스택 영역은 32나 64bit 단위로 분할된다.
          */
+
+        // 문자열 리터럴을 사용하면 JVM이 문자열 풀(string pool)에 해당 문자열을 검색하여 이미 있는 경우 새로운 객체를 만들지 않고,
+        // 기존의 객체를 재사용하기 때문에 더 효율적이다.
         String str1 = "hello";
         String str11 = "hello";
         String str2 = "halo";

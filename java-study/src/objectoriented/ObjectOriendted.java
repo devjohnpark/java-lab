@@ -75,6 +75,7 @@ public class ObjectOriendted {
         VariablesMethods vm = new VariablesMethods();
         VariablesMethods.classVariable = 100;
         System.out.println(vm.classVariable);
+        VariablesMethods.classMethod();
 
     }
 }
