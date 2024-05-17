@@ -1,6 +1,6 @@
 package objectoriented;
 
-public class ObjectOriendted {
+public class Main {
     public static void main(String[] args) {
         Wheel wheel1 = new Wheel(10, Tire.금호타이어);
         wheel1.changeTire(Tire.한국타이어);
@@ -77,5 +77,25 @@ public class ObjectOriendted {
         System.out.println(vm.classVariable);
         VariablesMethods.classMethod();
 
+
+        // Computer 객체 생성
+        Computer computer = new Computer("M1 Macbook Pro");
+
+        // Person 객체 생성
+        Person person = new Person("John");
+
+        // Person 객체에 Computer 객체 관계(참조) 형성
+        person.setComputer(computer);
+
+        // 계산식 정의
+        int operand1 = 10;
+        int operand2 = 5;
+        char operator = '+';
+
+        // Computer 객체에게 계산식 주고 결과값 반환받기
+        int result = person.getCalculatedValue(operand1, operand2, operator);
+
+        // 결과 출력
+        System.out.println("Result: " + result);
     }
 }
