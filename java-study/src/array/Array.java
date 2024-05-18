@@ -26,7 +26,7 @@ public class Array {
             System.out.printf("%d\n", arr[i]);
         }
 
-        // 길이가 0인 배열 생성
+        // 길이가 0인 배열 생성 (C언어와 달리 java는 길이가 0인 배열도 생성 가능)
         int[] x = new int[0];
         int[] x1 = new int[]{};
         int[] x2 = {};
