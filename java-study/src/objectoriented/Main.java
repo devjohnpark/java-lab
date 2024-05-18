@@ -97,5 +97,15 @@ public class Main {
 
         // 결과 출력
         System.out.println("Result: " + result);
+
+
+
+        VariablesMethods.classMethod(); // 인스턴스 생성 없이 실행 가능
+        VariablesMethods variablesMethods = new VariablesMethods();
+        variablesMethods.instanceMethod();
+        System.out.println(variablesMethods.instanceVariable);
+        char[] arr = variablesMethods.hello();
+
+        System.out.println(arr);
     }
 }
