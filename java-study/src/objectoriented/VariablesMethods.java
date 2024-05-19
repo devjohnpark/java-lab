@@ -3,6 +3,8 @@ package objectoriented;
 public class VariablesMethods {
     static int classVariable = 10;
     int instanceVariable = 20;
+    static int otherClassVariable;
+    int otherInstanceVariable;
 
     void instanceMethod() {
 //        static int si; // error

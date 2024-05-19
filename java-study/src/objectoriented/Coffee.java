@@ -28,4 +28,5 @@ class Coffee {
         System.out.printf("coffee1 %s %s %d\n", coffee1, coffee1.beanName, coffee1.density);
         System.out.printf("coffee2 %s %s %d\n", coffee2, coffee2.beanName, coffee2.density);
     }
+
 }
