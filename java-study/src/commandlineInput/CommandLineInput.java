@@ -1,4 +1,4 @@
-package commandLineInput;
+package commandlineInput;
 
 public class CommandLineInput {
     public static void main(String[] args) {

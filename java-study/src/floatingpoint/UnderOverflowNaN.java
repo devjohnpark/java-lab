@@ -1,4 +1,4 @@
-package floatingPoint;
+package floatingpoint;
 
 public class UnderOverflowNaN {
     public static void main(String[] args) {

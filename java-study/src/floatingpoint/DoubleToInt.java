@@ -1,4 +1,4 @@
-package floatingPoint;
+package floatingpoint;
 
 public class DoubleToInt {
     public static void main(String[] args) {

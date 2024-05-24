@@ -1,4 +1,4 @@
-package typeCasting;
+package typecasting;
 
 import integers.Integers;
 

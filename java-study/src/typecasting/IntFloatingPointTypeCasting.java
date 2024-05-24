@@ -1,6 +1,6 @@
-package typeCasting;
+package typecasting;
 
-import floatingPoint.FloatingPoint;
+import floatingpoint.FloatingPoint;
 import integers.Integers;
 
 public class IntFloatingPointTypeCasting {

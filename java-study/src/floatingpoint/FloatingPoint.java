@@ -1,4 +1,4 @@
-package floatingPoint;
+package floatingpoint;
 
 public class FloatingPoint {
     public static String numToBits(Number number) {

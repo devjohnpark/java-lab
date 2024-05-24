@@ -1,6 +1,6 @@
-package typeCasting;
+package typecasting;
 
-import floatingPoint.FloatingPoint;
+import floatingpoint.FloatingPoint;
 
 public class FloatingPointTypeCasting {
     public static void main(String[] args) {

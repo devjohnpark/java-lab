@@ -35,6 +35,8 @@ public class ConstantLiteral {
 
         // 문자 리터럴, 문자열 리터럴
         char ch2 = 'd';
-        String str = ""; // String은 클래스이므로, new 연산자를 통해 문자열 객체를 생성해야하지만 리터럴은 new 연산자 없이 저장이 허용된다.
+
+        // String은 클래스이므로, new 연산자를 통해 문자열 객체를 생성해야하지만 리터럴은 new 연산자 없이 저장이 허용된다.
+        String str = "";
     }
 }
