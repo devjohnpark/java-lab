@@ -15,7 +15,6 @@ public class Main {
         // 인스턴스가 참조가 되고 있지 않으면, 가비지 컬렉터에 의해서 자동으로 메모리에서 제거된다.
         wheel2 = wheel1;
         System.out.println("address is equal?" + (wheel1 == wheel2)); // true
-
         System.out.println(wheel1.getWheelRadius());
         System.out.println(wheel2.getWheelTire());
 
