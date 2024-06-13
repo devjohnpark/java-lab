@@ -3,7 +3,7 @@ package bytecode;
 public class AddExample {
 
     // add 메소드 정의
-    public int add(int a, int b) {
+    public static int add(int a, int b) {
         return a + b;
     }
 
