@@ -1,4 +1,4 @@
-package inheritance;
+package objectoriented.inheritance;
 
 public interface Animal2 {
     void makeSound();
