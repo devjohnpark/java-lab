@@ -1,4 +1,4 @@
-package objectoriented.inheritance;
+package objectoriented.inheritance.shapepointcircle;
 
 class Circle extends Shape {
     Point centerPoint; // 원점

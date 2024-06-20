@@ -1,4 +1,4 @@
-package objectoriented.inheritance;
+package objectoriented.inheritance.shapepointcircle;
 
 class Shape {
     String color;

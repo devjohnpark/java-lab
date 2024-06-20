@@ -60,7 +60,6 @@ public class InitBlock {
 
         // 객체 생성
         InitBlock initBlock = new InitBlock();
-
 //        // 인스턴스 변수 출력
 //        initBlock.printInstanceVariables();
     }

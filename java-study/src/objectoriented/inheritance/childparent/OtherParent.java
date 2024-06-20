@@ -1,4 +1,4 @@
-package objectoriented.inheritance;
+package objectoriented.inheritance.childparent;
 
 public class OtherParent {
     public void display2() {
