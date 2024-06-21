@@ -1,4 +1,4 @@
-package objectoriented.abstracts;
+package objectoriented.modifier;
 
 public abstract class AbstractTest {
     int n;
