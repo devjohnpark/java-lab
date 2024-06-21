@@ -14,8 +14,13 @@ public class AnimalTest {
         System.out.println(animal.x); // Animal 클래스의 인스턴스 변수 x 값 출력
         animal.makeSound(); // 1000 Meow 출력
 
+        Dog dog = new Dog();
+        System.out.println(dog.x); // 100
+        dog.makeSound(); // 100, Woof
 
-
+        Cat cat = new Cat();
+        System.out.println(cat.x); // 1000
+        cat.makeSound(); // 1000, Meow
     }
 }
 
