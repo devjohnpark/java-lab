@@ -81,13 +81,13 @@ public class Main {
 //        VariablesMethods.classMethod();
 
 
-        // Computer 객체 생성
+        // Refrigerator 객체 생성
         Computer computer = new Computer("M1 Macbook Pro");
 
         // Person 객체 생성
         Person person = new Person("John");
 
-        // Person 객체에 Computer 객체 관계(참조) 형성
+        // Person 객체에 Refrigerator 객체 관계(참조) 형성
         person.setComputer(computer);
 
         // 계산식 정의
@@ -95,7 +95,7 @@ public class Main {
         int operand2 = 5;
         char operator = '+';
 
-        // Computer 객체에게 계산식 주고 결과값 반환받기
+        // Refrigerator 객체에게 계산식 주고 결과값 반환받기
         int result = person.getCalculatedValue(operand1, operand2, operator);
 
         // 결과 출력

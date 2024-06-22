@@ -1,6 +1,6 @@
 package objectoriented.objectconcept;
 
-// Computer 클래스
+// Refrigerator 클래스
 public class Computer {
     private String model;
 

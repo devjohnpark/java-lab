@@ -3,7 +3,6 @@ package objectoriented.polymorphism.animalencapsulation;
 class Animal {
     private int x = 10;
 
-    // 인스턴스 변수에 접근하는 메서드
     public int getX() {
         return x;
     }
