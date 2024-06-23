@@ -18,7 +18,7 @@ public abstract class Engine {
     }
 
     public void start() {
-        System.out.println("Engine started.");
+
     }
 
     public void stop() {
