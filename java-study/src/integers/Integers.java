@@ -34,5 +34,6 @@ public class Integers {
 
         System.out.println("Byte -128의 이진수 표현: " + numToBits(signedNum)); // Byte -128의 이진수 표현: 10000000
         System.out.println("Byte 127의 이진수 표현: " + numToBits(unsignedNum)); // Byte 127의 이진수 표현: 01111111
+
     }
 }
