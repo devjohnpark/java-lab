@@ -1,4 +1,4 @@
-package objectoriented.polymorphism.interfaces.Parser;
+package objectoriented.polymorphism.interfaces.parser;
 
 public class ParserManager {
     public static Parserable getParser(String type) {

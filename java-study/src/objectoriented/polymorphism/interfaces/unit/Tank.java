@@ -1,6 +1,8 @@
 package objectoriented.polymorphism.interfaces.unit;
 
-class Tank extends Unit {
+import objectoriented.polymorphism.interfaces.fighter.Repairable;
+
+class Tank extends GroundUnit implements Repairable {
     public Tank(int x, int y, int hp) {
         super(x, y, hp);
     }

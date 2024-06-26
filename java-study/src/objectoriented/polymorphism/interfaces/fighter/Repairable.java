@@ -1,2 +1,3 @@
-package objectoriented.polymorphism.interfaces.fighter;public interface Repairable {
-}
+package objectoriented.polymorphism.interfaces.fighter;
+
+public interface Repairable { }

@@ -12,6 +12,5 @@ class Marine extends Unit {
 
     }
 
-    void stimPack() {
-    }
+    void stimPack() {}
 }

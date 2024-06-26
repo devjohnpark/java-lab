@@ -1,4 +1,4 @@
-package objectoriented.polymorphism.interfaces.Parser;
+package objectoriented.polymorphism.interfaces.parser;
 
 public class HTMLPaser implements Parserable {
     @Override

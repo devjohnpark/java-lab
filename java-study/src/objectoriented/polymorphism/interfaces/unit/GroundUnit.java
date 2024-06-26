@@ -1,13 +1,8 @@
-package objectoriented.polymorphism.abstracts.units;
+package objectoriented.polymorphism.interfaces.unit;
 
 public class GroundUnit extends Unit {
-    @Override
-    void move(int x, int y) {
-
+    public GroundUnit(int x, int y, int hp) {
+        super(x, y, hp);
     }
 
-    @Override
-    void stop() {
-
-    }
 }

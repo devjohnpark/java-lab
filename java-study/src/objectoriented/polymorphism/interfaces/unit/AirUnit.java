@@ -1,13 +1,9 @@
-package objectoriented.polymorphism.abstracts.units;
+package objectoriented.polymorphism.interfaces.unit;
 
-public class AirUnit extends Unit{
-    @Override
-    void move(int x, int y) {
 
+public class AirUnit extends Unit {
+    public AirUnit(int x, int y, int hp) {
+        super(x, y, hp);
     }
 
-    @Override
-    void stop() {
-
-    }
 }
