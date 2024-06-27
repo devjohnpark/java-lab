@@ -1,4 +1,4 @@
-package objectoriented.polymorphism.person;
+package objectoriented.polymorphism.casting;
 
 class Student extends Person {
     String major;

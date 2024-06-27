@@ -1,6 +1,7 @@
 package objectoriented.polymorphism.interfaces.database;
 
-class PostgreSQLDBHandler implements IDB {
+// PostgreSQL 데이터베이스 클라이언트 구현 클래스
+class PostgreSQLDataBaseClient implements IDataBaseClient {
     @Override
     public void connect() {
         // PostgreSQL 연결 로직

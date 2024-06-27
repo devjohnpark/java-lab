@@ -1,9 +1,10 @@
 package objectoriented.polymorphism.interfaces.database;
 
-public class DBHandler {
-    private IDB database;
+// 데이터베이스 드라이버
+public class DataBaseDriver {
+    private IDataBaseClient database;
 
-    public DBHandler(IDB database) {
+    public DataBaseDriver(IDataBaseClient database) {
         this.database = database;
     }
 
@@ -18,4 +19,5 @@ public class DBHandler {
     public void executeQuery(String query) {
         database.executeQuery(query);
     }
+
 }

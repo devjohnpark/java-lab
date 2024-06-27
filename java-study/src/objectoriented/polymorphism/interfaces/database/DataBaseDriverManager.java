@@ -1,13 +1,13 @@
 package objectoriented.polymorphism.interfaces.database;
 
-public class DBManager {
-    public static IDB getDatabase(String type) {
+public class DataBaseDriverManager {
+    public static IDataBaseClient getDatabase(String type) {
         if (type.equalsIgnoreCase("MySQL")) {
-            return new MySQLDBHandler();
+            return new MySQLDataBaseClient();
         }
 
         if (type.equalsIgnoreCase("PostgreSQL")) {
-            return new PostgreSQLDBHandler();
+            return new PostgreSQLDataBaseClient();
         }
 
         throw new IllegalArgumentException("Unknown Database type: " + type);

@@ -10,5 +10,7 @@ public class Test {
 
         Child c = new Child();
         c.defaultMethod3();
+
+//        System.out.println(c.x);
     }
 }
