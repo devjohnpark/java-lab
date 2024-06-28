@@ -1,6 +1,6 @@
 package objectoriented.polymorphism.inner;
 
-public class InnnerExample1 {
+public class InnnerExample {
     private int outerInstanceVariable = 1;
     static int outerStaticVariable = 1;
 
