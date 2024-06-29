@@ -16,7 +16,7 @@ public class DataBaseDriverTest {
         dbDriver1.disconnectDB();
         dbDriver2.disconnectDB();
 
-        IDataBaseClient iDatabase = DataBaseDriverManager.getDatabase("MySQL");
+        IDataBaseClient iDatabase = DataBaseDriverManager.getDatabase(DataBaseType.Mysql);
         DataBaseDriver dbDriver = new DataBaseDriver(iDatabase);
         dbDriver.connectDB();
         dbDriver.executeQuery("SELECT * FROM users;");

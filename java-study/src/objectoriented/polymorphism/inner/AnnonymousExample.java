@@ -22,5 +22,6 @@ public class AnnonymousExample {
                 System.out.println("AnnonymousExample class method");
             }
         };
+        System.out.println(instanceVariable);
     }
 }

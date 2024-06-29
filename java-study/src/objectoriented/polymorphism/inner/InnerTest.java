@@ -5,7 +5,12 @@ public class InnerTest {
         Outer outer = new Outer();
         outer.method();
 
-        InnnerExample innerExample1 = new InnnerExample();
-        innerExample1.method();
+        InnnerExample innerExample = new InnnerExample();
+        innerExample.method();
+
+        InnnerExample.staticMethod();
+
+        AnnonymousExample annonymousExample = new AnnonymousExample();
+        System.out.println(annonymousExample.instanceVariable.getClass());
     }
 }

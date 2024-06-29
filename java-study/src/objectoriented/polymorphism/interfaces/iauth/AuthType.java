@@ -1,5 +1,3 @@
 package objectoriented.polymorphism.interfaces.iauth;
 
-interface IAuth {
-    void checkAuth();
-}
+enum AuthType { Apple, Google, Facebook }
