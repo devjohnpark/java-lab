@@ -1,4 +1,4 @@
-package ExceptionHandle;
+package exceptionhandle.trycatchfinally;
 
 public class Throw {
     public static void main(String[] args) {

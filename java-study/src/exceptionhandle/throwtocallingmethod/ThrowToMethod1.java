@@ -1,4 +1,4 @@
-package ExceptionHandle;
+package exceptionhandle.throwtocallingmethod;
 
 /*
 java.lang.Exception

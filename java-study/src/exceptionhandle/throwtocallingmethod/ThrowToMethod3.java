@@ -1,4 +1,4 @@
-package ExceptionHandle;
+package exceptionhandle.throwtocallingmethod;
 
 public class ThrowToMethod3 {
     public static void method1() {

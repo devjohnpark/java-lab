@@ -1,4 +1,4 @@
-package ExceptionHandle;
+package exceptionhandle.checkunchecked;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;

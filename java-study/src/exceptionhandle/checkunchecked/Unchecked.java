@@ -1,4 +1,4 @@
-package ExceptionHandle;
+package exceptionhandle.checkunchecked;
 
 public class Unchecked {
     public static void main(String[] args) {

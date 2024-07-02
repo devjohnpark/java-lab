@@ -1,4 +1,4 @@
-package ExceptionHandle;
+package exceptionhandle.trycatchfinally;
 
 class Exception1 {
     public static void main(String[] args) {
