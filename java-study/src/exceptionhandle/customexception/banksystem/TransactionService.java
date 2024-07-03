@@ -1,13 +1,13 @@
 package exceptionhandle.customexception.banksystem;
 
 public class TransactionService {
-    private final BankAccount bankAccount;
+    private TransactionStateManager transactionManager;
 
-    public TransactionService(BankAccount bankAccount) {
-        this.bankAccount = bankAccount;
+    public TransactionService(TransactionStateManager transactionManager) {
+        this.transactionManager = transactionManager;
     }
 
-    public void deposit(double amount) throws InvalidUserInputException {
+    private void deposit(BankAccount bankAccount, double amount) throws InvalidUserInputException {
         if (amount <= 0) {
             throw new InvalidUserInputException(BankSystemErrorCode.INVALID_DEPOSIT_AMOUNT);
         }
@@ -15,7 +15,7 @@ public class TransactionService {
         System.out.println("Deposited " + amount);
     }
 
-    public void withdraw(double amount) throws InvalidUserInputException, InsufficientFundsException {
+    private void withdraw(BankAccount bankAccount, double amount) throws InvalidUserInputException, InsufficientFundsException {
         if (amount <= 0) {
             throw new InvalidUserInputException(BankSystemErrorCode.INVALID_WITHDRAWAL_AMOUNT);
         }
@@ -24,5 +24,29 @@ public class TransactionService {
         }
         bankAccount.updateBalance(-amount);
         System.out.println("Withdrew " + amount);
+    }
+
+    public void performDeposit(BankAccount bankAccount, double amount) {
+        try {
+            transactionManager.startTransaction();
+            deposit(bankAccount, amount);
+        } catch (InvalidUserInputException e) {
+            e.printStackTrace();
+        } finally {
+            transactionManager.endTransaction();
+        }
+    }
+
+    public void performWithdraw(BankAccount bankAccount, double amount) {
+        try {
+            transactionManager.startTransaction();
+            withdraw(bankAccount, amount);
+        } catch (InvalidUserInputException e) {
+            e.printStackTrace();
+        } catch (InsufficientFundsException e) {
+            e.printStackTrace();
+        } finally {
+            transactionManager.endTransaction();
+        }
     }
 }
