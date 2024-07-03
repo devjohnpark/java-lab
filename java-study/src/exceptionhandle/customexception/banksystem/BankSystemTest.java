@@ -1,14 +1,21 @@
 package exceptionhandle.customexception.banksystem;
 
-//public class BankSystemDemo
+public class BankSystemTest {
+    public static void main(String[] args) {
+        BankAccount bankAccount = new BankAccount(100);
+        TransactionService transactionService = new TransactionService(bankAccount);
+        TransactionStateManager transactionStateManagerManager = new TransactionStateManager();
+        BankSystemController bankSystemController = new BankSystemController(transactionService,transactionStateManagerManager);
 
+//        bankSystemController.handleWithdraw(-20);
+//        bankSystemController.handleDeposit(-50);
+//        bankSystemController.handleWithdraw(200);
 
-//    public static void main(String[] args) {
-//        BankAccount account = new BankAccount(100.0);
-//
+        transactionStateManagerManager.startTransaction();
+        transactionStateManagerManager.startTransaction();
 //        try {
 //            // 유효하지 않은 입금 테스트 (체크 예외)
-//            account.deposit(-50);
+//
 //        } catch (InvalidUserInputException e) {
 //            e.printStackTrace();
 //        }
@@ -46,6 +53,5 @@ package exceptionhandle.customexception.banksystem;
 //        } catch (InvalidTransactionStateException e) {
 //            e.printStackTrace();
 //        }
-//    }
-//}
-
+    }
+}
