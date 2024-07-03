@@ -6,5 +6,4 @@ public class InvalidTransactionStateException extends BankSystemRuntimeException
     public InvalidTransactionStateException(BankSystemErrorCode errorCode) {
         super(errorCode);
     }
-
 }

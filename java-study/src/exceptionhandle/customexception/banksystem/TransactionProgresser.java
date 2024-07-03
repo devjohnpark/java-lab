@@ -1,6 +1,6 @@
 package exceptionhandle.customexception.banksystem;
 
-public class TransactionStateManager {
+public class TransactionProgresser {
     private boolean transactionInProgress;
 
     {
@@ -11,19 +11,23 @@ public class TransactionStateManager {
         return transactionInProgress;
     }
 
+    private void setTransactionInProgress() {
+        this.transactionInProgress = !transactionInProgress;
+    }
+
     public void startTransaction() throws InvalidTransactionStateException {
-        if (transactionInProgress) {
+        if (isTransactionInProgress()) {
             throw new InvalidTransactionStateException(BankSystemErrorCode.TRANSACTION_ALREADY_IN_PROGRESS);
         }
-        transactionInProgress = true;
+        setTransactionInProgress();
         System.out.println("Transaction started.");
     }
 
     public void endTransaction() throws InvalidTransactionStateException {
-        if (!transactionInProgress) {
+        if (!isTransactionInProgress()) {
             throw new InvalidTransactionStateException(BankSystemErrorCode.NO_TRANSACTION_IN_PROGRESS);
         }
-        transactionInProgress = false;
+        setTransactionInProgress();
         System.out.println("Transaction ended.");
     }
 }
