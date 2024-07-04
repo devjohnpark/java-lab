@@ -1,6 +1,8 @@
 package exceptionhandle.customexception.banksystem;
 
-public class TransactionProgresser {
+//import exceptionhandle.closeable.CloseException;
+
+public class TransactionProgresser implements AutoCloseable {
     private boolean transactionInProgress;
 
     {
@@ -29,5 +31,14 @@ public class TransactionProgresser {
         }
         setTransactionInProgress();
         System.out.println("Transaction ended.");
+    }
+
+    @Override
+    public void close() throws InvalidTransactionStateException {
+        try {
+            endTransaction();
+        } catch (InvalidTransactionStateException e) {
+            e.printStackTrace();
+        }
     }
 }
