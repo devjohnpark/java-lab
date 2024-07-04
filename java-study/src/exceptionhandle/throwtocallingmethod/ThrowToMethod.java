@@ -1,5 +1,6 @@
 package exceptionhandle.throwtocallingmethod;
 
+
 public class ThrowToMethod {
     public static void method() throws Exception{
         throw new Exception();
