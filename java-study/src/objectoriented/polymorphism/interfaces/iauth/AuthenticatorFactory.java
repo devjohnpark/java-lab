@@ -1,6 +1,6 @@
 package objectoriented.polymorphism.interfaces.iauth;
 
- class AuthManager {
+ class AuthenticatorFactory {
     public static IAuthenticator getAuthenticator(AuthType authType) {
         switch (authType) {
             case Apple:
@@ -8,7 +8,7 @@ package objectoriented.polymorphism.interfaces.iauth;
             case Google:
                 return new GoogleAuthenticator();
             case Facebook:
-                return new FacebookAuthticator();
+                return new FacebookAuthenticator();
             default:
                 throw new IllegalArgumentException("Unknown Authenticator type: " + authType);
         }

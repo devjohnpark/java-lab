@@ -19,8 +19,7 @@ public class ThrowToMethod1 {
 
     public static void main(String[] args) throws Exception {
         try {
-//            method1();
-            throw new Exception();
+            method1();
         } catch (Exception e) {
             e.printStackTrace(); // 예외가 발생한 호출 스택(Call Stack)에 있었던 메서드의 정보와 예외 메세지를 한번에 출력
         }

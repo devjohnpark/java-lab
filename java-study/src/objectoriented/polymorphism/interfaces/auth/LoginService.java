@@ -1,7 +1,7 @@
 package objectoriented.polymorphism.interfaces.auth;
 
 class LoginService {
-    private Authenticator authenticator;
+    private final Authenticator authenticator;
 
     public LoginService(Authenticator authenticator) {
         this.authenticator = authenticator;

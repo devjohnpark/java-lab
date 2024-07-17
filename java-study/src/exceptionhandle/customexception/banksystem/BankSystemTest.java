@@ -8,14 +8,17 @@ public class BankSystemTest {
         TransactionService transactionService = new TransactionService(transactionProgresser, transactor);
 
 //        // 정상 실행
+//        transactionService.performDeposit(bankAccount, 50);
+//        transactionService.performWithdraw(bankAccount, 30);
+//
 //        try {
-//            transactionService.performDeposit(bankAccount, 50);
+//            transactionService.performDepositRuntimeExceptionHandling(bankAccount, 50);
 //        } catch (InvalidUserInputException e) {
 //            e.printStackTrace();
 //        }
 //
 //        try {
-//            transactionService.performWithdraw(bankAccount, 30);
+//            transactionService.performWithdrawRuntimeExceptionHandling(bankAccount, 30);
 //        } catch (InvalidUserInputException e) {
 //           e.printStackTrace();
 //        } catch (InsufficientFundsException e) {
@@ -23,27 +26,32 @@ public class BankSystemTest {
 //        }
 
 //         Checked Exception 발생
-        try {
-            transactionService.performWithdraw(bankAccount, -20); // 음수 출금 예외
-        } catch (InvalidUserInputException e) {
-            e.printStackTrace();
-        } catch (InsufficientFundsException e) {
-            e.printStackTrace();
-        }
+//        transactionService.performWithdraw(bankAccount, -20); // 음수 출금 예외
+//        transactionService.performDeposit(bankAccount, -50); // 음수 입금 예외
+//        transactionService.performWithdraw(bankAccount, 200); // 잔고가 100인데 200을 출급하여 예외
 
-        try {
-            transactionService.performDeposit(bankAccount, -50); // 음수 입금 예외
-        } catch (InvalidUserInputException e) {
-            e.printStackTrace();
-        }
 
-        try {
-            transactionService.performWithdraw(bankAccount, 200); // 잔고가 100인데 200을 출급하여 예외
-        } catch (InvalidUserInputException e) {
-            e.printStackTrace();
-        } catch (InsufficientFundsException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            transactionService.performWithdraw(bankAccount, -20); // 음수 출금 예외
+//        } catch (InvalidUserInputException e) {
+//            e.printStackTrace();
+//        } catch (InsufficientFundsException e) {
+//            e.printStackTrace();
+//        }
+//
+//        try {
+//            transactionService.performDeposit(bankAccount, -50); // 음수 입금 예외
+//        } catch (InvalidUserInputException e) {
+//            e.printStackTrace();
+//        }
+//
+//        try {
+//            transactionService.performWithdraw(bankAccount, 200); // 잔고가 100인데 200을 출급하여 예외
+//        } catch (InvalidUserInputException e) {
+//            e.printStackTrace();
+//        } catch (InsufficientFundsException e) {
+//            e.printStackTrace();
+//        }
 
 
         // 스레드 풀 생성
@@ -55,6 +63,10 @@ public class BankSystemTest {
             threads[i] = new Thread(() -> {
 
                 // 정상 실행
+//                transactionService.performDeposit(bankAccount, 50);
+//                transactionService.performWithdraw(bankAccount, 30);
+
+
                 try {
                     transactionService.performDeposit(bankAccount, 50);
                 } catch (InvalidUserInputException e) {
