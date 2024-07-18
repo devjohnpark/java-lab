@@ -2,9 +2,9 @@ package objectoriented.polymorphism.interfaces.iauth;
 
 class AuthTest {
     public static void main(String[] args) {
-        IAuthenticator authenticator = new AppleAuthenticator();
+        IAuthenticator IAuthenticator = new AppleIAuthenticator();
 
-        LoginService loginService = new LoginService(AuthenticatorFactory.getAuthenticator(AuthType.Apple));
+        LoginService loginService = new LoginService(AuthenticatorFactory.getAuthenticator(AuthenticatorType.Apple));
         loginService.login("john park", "devjohnpark@gmail.com");
     }
 }

@@ -1,21 +1,33 @@
 package objectoriented.polymorphism.interfaces.iauth;
 
-class AuthenticatorProxy implements IAuthenticator {
-    private final IAuthenticator realAuthenticator;
+import java.util.function.BiConsumer;
 
-    public AuthenticatorProxy(IAuthenticator realAuthenticator) {
-        this.realAuthenticator = realAuthenticator;
+class AuthenticatorProxy implements IAuthenticator {
+    private final IAuthenticator realIAuthenticator;
+
+    public AuthenticatorProxy(IAuthenticator realIAuthenticator) {
+        this.realIAuthenticator = realIAuthenticator;
     }
 
     @Override
     public void authenticate(String username, String useremail) {
-        // 추가 기능: 인증 전 로깅
-        System.out.println(String.format("Logging: Authenticating with user: %s and email: %s .", username, useremail));
+//        realIAuthenticator.authenticate(username, useremail);
+        measureExecutionTime(() -> realIAuthenticator.authenticate(username, useremail));
+    }
 
-        // 실제 인증 객체에 위임
-        realAuthenticator.authenticate(username, useremail);
+    private void measureExecutionTime(Runnable method) {
+        // 실행 시간 측정을 위한 시작 시간 기록
+        long startTime = System.currentTimeMillis();
 
-        // 추가 기능: 인증 후 로깅
-        System.out.println(String.format("Logging: Authentication completed for user: %s and email: %s .", username, useremail));
+        method.run();
+
+        // 실행 시간 측정을 위한 종료 시간 기록
+        long endTime = System.currentTimeMillis();
+
+        // 실행 시간 계산
+        long duration = endTime - startTime;
+
+        // 실행 시간 출력
+        System.out.println(String.format("authenticate method execution time: %dms.\n", duration));
     }
 }

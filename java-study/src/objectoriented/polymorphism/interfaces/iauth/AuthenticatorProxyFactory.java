@@ -4,25 +4,25 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
 public class AuthenticatorProxyFactory {
-    private static final ConcurrentMap<AuthType, IAuthenticator> authenticators = new ConcurrentHashMap<>();
+    private static final ConcurrentMap<AuthenticatorType, IAuthenticator> authenticators = new ConcurrentHashMap<>();
 
-    public static IAuthenticator getAuthenticator(AuthType authType) {
-        return authenticators.computeIfAbsent(authType, key -> {
-            IAuthenticator authenticator;
+    public static IAuthenticator getAuthenticator(AuthenticatorType authenticatorType) {
+        return authenticators.computeIfAbsent(authenticatorType, key -> {
+            IAuthenticator IAuthenticator;
             switch (key) {
                 case Apple:
-                    authenticator = new AppleAuthenticator();
+                    IAuthenticator = new AppleIAuthenticator();
                     break;
                 case Google:
-                    authenticator = new GoogleAuthenticator();
+                    IAuthenticator = new GoogleIAuthenticator();
                     break;
                 case Facebook:
-                    authenticator = new FacebookAuthenticator();
+                    IAuthenticator = new FacebookIAuthenticator();
                     break;
                 default:
-                    throw new IllegalArgumentException("Unknown Authenticator type: " + key);
+                    throw new IllegalArgumentException("Unknown IAuthenticator type: " + key);
             }
-            return new AuthenticatorProxy(authenticator);
+            return new AuthenticatorProxy(IAuthenticator);
         });
     }
 }

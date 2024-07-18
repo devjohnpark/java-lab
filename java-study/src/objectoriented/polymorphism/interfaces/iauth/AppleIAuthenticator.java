@@ -1,6 +1,6 @@
 package objectoriented.polymorphism.interfaces.iauth;
 
-public class AppleAuthenticator implements IAuthenticator {
+public class AppleIAuthenticator implements IAuthenticator {
     @Override
     public void authenticate(String username, String useremail) {
         appleAuthenticate(username, useremail);

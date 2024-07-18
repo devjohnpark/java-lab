@@ -1,6 +1,6 @@
 package objectoriented.polymorphism.interfaces.iauth;
 
-class FacebookAuthenticator implements IAuthenticator {
+class FacebookIAuthenticator implements IAuthenticator {
     @Override
     public void authenticate(String username, String useremail) {
         facebookAuthenticate(username, useremail);

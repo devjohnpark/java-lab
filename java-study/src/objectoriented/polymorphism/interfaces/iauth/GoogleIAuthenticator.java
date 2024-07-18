@@ -1,6 +1,6 @@
 package objectoriented.polymorphism.interfaces.iauth;
 
-class GoogleAuthenticator implements IAuthenticator {
+class GoogleIAuthenticator implements IAuthenticator {
     @Override
     public void authenticate(String username, String useremail) {
         googleAuthenticate(username, useremail);
