@@ -1,16 +1,22 @@
 package objectoriented.polymorphism.interfaces.iauth;
 
  class AuthenticatorFactory {
-    public static IAuthenticator getAuthenticator(AuthenticatorType authenticatorType) {
+     private static IAuthenticator authenticator;
+
+     public static IAuthenticator getAuthenticator(AuthenticatorType authenticatorType) {
         switch (authenticatorType) {
             case Apple:
-                return new AppleIAuthenticator();
+                authenticator =  new AppleIAuthenticator();
+                break;
             case Google:
-                return new GoogleIAuthenticator();
+                authenticator =  new GoogleIAuthenticator();
+                break;
             case Facebook:
-                return new FacebookIAuthenticator();
+                authenticator = new FacebookIAuthenticator();
+                break;
             default:
                 throw new IllegalArgumentException("Unknown IAuthenticator type: " + authenticatorType);
         }
-    }
+        return authenticator;
+     }
 }

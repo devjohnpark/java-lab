@@ -3,6 +3,8 @@ package objectoriented.engine;
 import objectoriented.objectconcept.Computer;
 import objectoriented.objectconcept.Person;
 
+import java.util.Optional;
+
 public class Main {
     public static void main(String[] args) {
         Wheel wheel1 = new Wheel(10, Tire.금호타이어);
@@ -90,6 +92,8 @@ public class Main {
         // Person 객체에 Refrigerator 객체 관계(참조) 형성
         person.setComputer(computer);
 
+
+
         // 계산식 정의
         int operand1 = 10;
         int operand2 = 5;
@@ -110,7 +114,6 @@ public class Main {
 //        char[] arr = variablesMethods.hello();
 
 //        System.out.println(arr);
-
 
     }
 }
