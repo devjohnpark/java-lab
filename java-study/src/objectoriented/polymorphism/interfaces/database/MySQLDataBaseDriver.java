@@ -1,7 +1,7 @@
 package objectoriented.polymorphism.interfaces.database;
 
-// MySQL 데이터베이스 클라이언트 구현 클래스
-class MySQLDataBaseClient implements IDataBaseClient {
+// MySQL 데이터베이스 드라이버 구현 클래스
+class MySQLDataBaseDriver implements DataBaseDriver {
     @Override
     public void connect() {
         // MySQL 연결 로직
