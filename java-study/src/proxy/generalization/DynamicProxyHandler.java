@@ -14,33 +14,29 @@ public class DynamicProxyHandler implements InvocationHandler {
         this.realObjectClass = realObjectClass;
     }
 
-    // 프록시 객체는 EntityManager의 모든 메서드가 호출될 때마다 EntityManagerProxyHandler(InvocationHandler)의 invoke 메서드가 실행된다.
-    // Parameter: 프록시 객체(EntityManager의 프록시 객체), 프록시 객체의 호출된 메서드(persist)의 메타데이터를 포함한 Method 객체, 메서드에 전달할 매개변수(entity)
-    @Override
-    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+    public void preAction() throws Throwable {
         System.out.println("[실제 구현체의 메서드 호출 전 작업 수행]");
-        Object result = null;
         if (realObject == null) {
             realObject = realObjectClass.getDeclaredConstructor().newInstance();
             System.out.println("새로운 EntityManger 구현체 생성");
         }
+    }
 
-        // Reflection API(java.lang.reflect.Method)를 사용하여 realEntityManager 객체의 메서드를 동적으로 호출이 가능하다.
-        // method: java.lang.reflect.Method 객체로, 호출하려는 메서드 정보(메서드명, 파라미터 타입, 반환 타입 등)을 포함를 나타낸다.
-        // method 객체(JVM의 Method Area에서 RealEntityManager 클래스의 메타데이터)를 사용하여 호출할 메서드를 런타임에 결정가능하다.
-        System.out.println("[실제 구현체의 메서드 호출]");
-
-        try {
-            result = method.invoke(realObject, args); // 메서드 실행 결과를 result 변수에 저장
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        if (method.getName().equals("clear")) {
-            realObject = null;
-        }
-
+    public void postAction() {
         System.out.println("[실제 구현체의 메서드 호출 후 작업 수행]");
+    }
+
+    // 프록시 객체는 EntityManager의 모든 메서드가 호출될 때마다 EntityManagerProxyHandler(InvocationHandler)의 invoke 메서드가 실행된다.
+    // Parameter: 프록시 객체(EntityManager의 프록시 객체), 프록시 객체의 호출된 메서드(persist)의 메타데이터를 포함한 Method 객체, 메서드에 전달할 매개변수(entity)
+    // Reflection API(java.lang.reflect.Method)를 사용하여 realEntityManager 객체의 메서드를 동적으로 호출이 가능하다.
+    // method: java.lang.reflect.Method 객체로, 호출하려는 메서드 정보(메서드명, 파라미터 타입, 반환 타입 등)을 포함를 나타낸다.
+    // method 객체(JVM의 Method Area에서 RealEntityManager 클래스의 메타데이터)를 사용하여 호출할 메서드를 런타임에 결정가능하다.
+    @Override
+    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+        preAction();
+        System.out.println("[실제 구현체의 메서드 호출]");
+        Object result = method.invoke(realObject, args); // 메서드 실행 결과를 result 변수에 저장
+        postAction();
         return result; // realEntityManager 객체의 메서드 실행 결과 반환
     }
 
