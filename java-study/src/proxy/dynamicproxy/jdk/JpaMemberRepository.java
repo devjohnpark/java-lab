@@ -1,7 +1,4 @@
-package proxy.dynamicproxy;
-
-import java.util.List;
-import java.util.Optional;
+package proxy.dynamicproxy.jdk;
 
 public class JpaMemberRepository implements MemberRepository {
 

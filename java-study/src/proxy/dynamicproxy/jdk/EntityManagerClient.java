@@ -1,4 +1,4 @@
-package proxy.dynamicproxy;
+package proxy.dynamicproxy.jdk;
 
 public class EntityManagerClient {
     public static void main(String[] args) {

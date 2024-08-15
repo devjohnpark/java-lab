@@ -27,6 +27,8 @@ public class TransactionalDynamicProxyHandler implements InvocationHandler {
             } catch (Exception e) {
                 System.out.println("트랜잭션 롤백");
                 throw e;
+            } finally {
+
             }
         } else {
             // 트랜잭션이 필요하지 않은 경우, 그냥 메서드를 호출

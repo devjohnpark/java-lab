@@ -1,6 +1,9 @@
 package proxy.generalization;
 
-import proxy.dynamicproxy.*;
+import proxy.dynamicproxy.jdk.EntityManager;
+import proxy.dynamicproxy.jdk.JpaMemberRepository;
+import proxy.dynamicproxy.jdk.Member;
+import proxy.dynamicproxy.jdk.RealEntityManager;
 
 public class Client {
     public static void main(String[] args) {

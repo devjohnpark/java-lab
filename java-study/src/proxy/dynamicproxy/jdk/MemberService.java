@@ -1,8 +1,8 @@
-package proxy.dynamicproxy;
+package proxy.dynamicproxy.jdk;
 
 import proxy.generalization.Transactional;
 
-public class MemberService implements IMemberService {
+public class MemberService {
 //    private final MemberRepository memberRepository = new MemoryMemberRepository();
 
     private final MemberRepository memberRepository;

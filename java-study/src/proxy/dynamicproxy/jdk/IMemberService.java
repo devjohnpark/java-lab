@@ -1,6 +1,4 @@
-package proxy.dynamicproxy;
-
-import proxy.generalization.Transactional;
+package proxy.dynamicproxy.jdk;
 
 public interface IMemberService {
 //    @Transactional

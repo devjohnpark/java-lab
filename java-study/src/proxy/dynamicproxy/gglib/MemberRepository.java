@@ -1,6 +1,5 @@
-package proxy.dynamicproxy;
+package proxy.dynamicproxy.gglib;
 
-import java.util.Optional;
 
 public interface MemberRepository {
     Member save(Member member);

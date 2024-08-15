@@ -1,8 +1,7 @@
-package proxy.dynamicproxy;
+package proxy.dynamicproxy.jdk;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
-import java.lang.reflect.Proxy;
 
 public class EntityManagerProxyHandler implements InvocationHandler {
     private EntityManager realEntityManager;
