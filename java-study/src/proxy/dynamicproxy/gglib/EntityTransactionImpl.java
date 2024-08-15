@@ -27,7 +27,7 @@ public class EntityTransactionImpl implements EntityTransaction {
             try {
                 connection.commit();
             } catch (SQLException e) {
-                e.printStackTrace();
+                throw new RuntimeException(e);
             } finally {
                 resetAutoCommit();
             }

@@ -43,7 +43,7 @@ public class Client {
             member.setId(10L);
             member.setName("john p");
             proxyMemberService.join(member);
-
+            proxyMemberService.validateDuplicatedMember(member);
 
     }
 }

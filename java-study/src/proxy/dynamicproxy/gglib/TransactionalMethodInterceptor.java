@@ -2,7 +2,7 @@ package proxy.dynamicproxy.gglib;
 
 import net.sf.cglib.proxy.MethodInterceptor;
 import net.sf.cglib.proxy.MethodProxy;
-import proxy.generalization.Transactional;
+//import proxy.dynamicproxy.gglib.Transactional;
 
 import java.lang.reflect.Method;
 import java.sql.SQLException;
@@ -27,10 +27,8 @@ public class TransactionalMethodInterceptor implements MethodInterceptor {
 
     @Override
     public Object intercept(Object o, Method method, Object[] objects, MethodProxy methodProxy) throws Throwable {
-        Method targetMethod = target.getClass().getMethod(method.getName(), method.getParameterTypes());
-        System.out.println("Not Transactional");
-        if (targetMethod.isAnnotationPresent(Transactional.class)) {
-            System.out.println("Transactional");
+
+        if (method.isAnnotationPresent(Transactional.class)) {
             EntityTransaction transaction = entityManager.getTransaction();
             try {
                 transaction.begin();
@@ -47,13 +45,5 @@ public class TransactionalMethodInterceptor implements MethodInterceptor {
             return method.invoke(target, objects);
         }
     }
-
-//    @Override
-//    public Object intercept(Object obj, Method method, Object[] args, MethodProxy proxy) throws Throwable {
-//
-////        Method targetMethod = target.getClass().getMethod(method.getName(), method.getParameterTypes());
-//
-
-//    }
 }
 
