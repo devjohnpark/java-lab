@@ -7,26 +7,6 @@ import java.sql.SQLException;
 
 public class EntityManagerImpl implements EntityManager {
 
-//    private final Connection connection;
-//    private final EntityTransaction transaction;
-//
-//    public EntityManagerImpl(Connection connection) {
-//        this.connection = connection;
-//        this.transaction = new EntityTransactionImpl(connection);
-//    }
-//
-//    public EntityTransaction getTransaction() {
-//        return transaction;
-//    }
-
-//    private Connection connection;
-//
-//    private EntityTransaction transaction;
-//
-//    public EntityManagerImpl() {
-//
-//    }
-
     private final ConnectionProvider connectionProvider;
     private EntityTransactionImpl transaction;
 
@@ -60,8 +40,7 @@ public class EntityManagerImpl implements EntityManager {
             // 기본 생성자를 통해 새로운 인스턴스를 생성하여 반환
             return entityType.getDeclaredConstructor().newInstance();
         } catch (Exception e) {
-            e.printStackTrace();
-            return null; // 예외 발생 시 null 반환 (실제로는 예외 처리를 다르게 할 수 있음)
+            throw new RuntimeException(e);
         }
     }
 

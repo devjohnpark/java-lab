@@ -57,9 +57,4 @@ public class EntityManagerFactory {
     public EntityManager createEntityManager() {
         return new EntityManagerImpl(connectionProvider);
     }
-
-//    public void close() {
-//        connectionProvider.close();
-//        instance = null;
-//    }
 }

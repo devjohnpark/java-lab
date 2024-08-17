@@ -1,6 +1,5 @@
 package proxy.dynamicproxy.jdk;
 
-import proxy.generalization.Transactional;
 
 public class MemberService {
 //    private final MemberRepository memberRepository = new MemoryMemberRepository();
@@ -15,7 +14,6 @@ public class MemberService {
     }
 
     // 회원 가입
-    @Transactional
     public Long join(Member member) {
         // 동일한 이름의 회원 중복 X
         validateDuplicatedMember(member);
