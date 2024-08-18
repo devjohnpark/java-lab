@@ -1,4 +1,4 @@
-package proxy.dynamicproxy.gglib;
+package proxy.dynamicproxy.gglib.transactional;
 
 public interface EntityManager {
     void persist(Object entity);

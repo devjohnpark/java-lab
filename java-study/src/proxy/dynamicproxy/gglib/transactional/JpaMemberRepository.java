@@ -1,6 +1,4 @@
-package proxy.dynamicproxy.gglib;
-
-import proxy.dynamicproxy.gglib.EntityManager;
+package proxy.dynamicproxy.gglib.transactional;
 
 public class JpaMemberRepository implements MemberRepository {
 

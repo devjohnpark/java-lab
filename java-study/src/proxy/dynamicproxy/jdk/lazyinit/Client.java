@@ -28,12 +28,12 @@ public class Client {
         System.out.println("Super Class " + entityManager.getClass().getSuperclass().getSimpleName());
         System.out.println("Class " + entityManager.getClass().getSimpleName());
 
-//        EntityManager entityManager = ProxyFactory.createProxy(EntityManager.class, new LazyInitializationHandler(RealEntityManager.class));
+//        EntityManager entityManager = CglibDynamicProxyFactory.createProxy(EntityManager.class, new LazyInitializationHandler(RealEntityManager.class));
 //
 //        JpaMemberRepository jpaMemberRepository = new JpaMemberRepository(entityManager);
 //        Member member = new Member();
 //        MemberService memberService = new MemberService(jpaMemberRepository);
-//        IMemberService proxyMemberService = ProxyFactory.createProxy(IMemberService.class, new TransactionalDynamicProxyHandler(memberService));
+//        IMemberService proxyMemberService = CglibDynamicProxyFactory.createProxy(IMemberService.class, new TransactionalDynamicProxyHandler(memberService));
 //        proxyMemberService.join(member);
 
     }

@@ -48,8 +48,8 @@ public class Test {
 
         // 1. 프록시 등록 (CGLIB는 Enhancer를 사용해서 프록시를 등록한다)
         Enhancer enhancer = new Enhancer();
-        enhancer.setSuperclass(Subject.class); // CGLIB는 구체 클래스를 상속 받아서 프록시를 생성하기 때문에 상혹할 구체 클래스를 지정
-        enhancer.setCallback(new MyProxyInterceptor(new Subject())); // 프록시 핸들러 할당
+        enhancer.setSuperclass(Subject.class);
+        enhancer.setCallback(new MyProxyInterceptor(new Subject()));
 
         // 2. 프록시 생성
         Subject proxy = (Subject) enhancer.create(); // setSuperclass() 에서 지정한 클래스를 상속 받아서 프록시가 만들어진다.

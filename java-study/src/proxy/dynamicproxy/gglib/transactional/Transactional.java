@@ -1,4 +1,4 @@
-package proxy.dynamicproxy.gglib;
+package proxy.dynamicproxy.gglib.transactional;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

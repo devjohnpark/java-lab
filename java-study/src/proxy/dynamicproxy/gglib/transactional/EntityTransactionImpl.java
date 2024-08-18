@@ -1,4 +1,4 @@
-package proxy.dynamicproxy.gglib;
+package proxy.dynamicproxy.gglib.transactional;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -13,17 +13,18 @@ public class EntityTransactionImpl implements EntityTransaction {
     }
 
     public void begin() {
+        System.out.println("=========>Transaction started");
         try {
             connection.setAutoCommit(false);
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
         active = true;
-        System.out.println("Transaction started");
     }
 
-    public void commit() {
+    public void commit() throws RuntimeException {
         if (active) {
+            System.out.println("=========>Transaction committed");
             try {
                 connection.commit();
             } catch (SQLException e) {
@@ -32,30 +33,40 @@ public class EntityTransactionImpl implements EntityTransaction {
                 resetAutoCommit();
             }
             active = false;
-            System.out.println("Transaction committed");
         }
     }
 
     public void rollback() {
         if (active) {
+            System.out.println("=========>Transaction rolled back");
             try {
                 connection.rollback();
             } catch (SQLException e) {
-                e.printStackTrace();
+                throw new RuntimeException(e);
             } finally {
                 resetAutoCommit();
             }
             active = false;
-            System.out.println("Transaction rolled back");
         }
     }
 
     private void resetAutoCommit() {
+        System.out.println("=========>Reset Auto Commit");
         try {
             connection.setAutoCommit(true);
+            closeConnection();
         } catch (SQLException e) {
-            throw new RuntimeException("Failed to reset auto-commit", e);
+            throw new RuntimeException(e);
         }
+    }
+
+    private void closeConnection() {
+        try {
+            connection.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        System.out.println("=========>Close DB Connection");
     }
 
     public boolean isActive() {

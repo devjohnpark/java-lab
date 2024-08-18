@@ -1,4 +1,4 @@
-package proxy.dynamicproxy.gglib;
+package proxy.dynamicproxy.gglib.transactional;
 
 
 class MemberService {
@@ -22,7 +22,7 @@ class MemberService {
         return member.getId();
     }
 
-    public void validateDuplicatedMember(Member member) {
+    private void validateDuplicatedMember(Member member) {
         memberRepository.findByName(member.getName());
     }
 
