@@ -36,6 +36,7 @@ public class JpaTransactionManager {
 
     public void closeEntityManager() {
         if (entityManagerInit != null) {
+            entityManagerInit.clear();
             entityManagerInit.close();
         }
     }

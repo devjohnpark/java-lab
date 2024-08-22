@@ -13,7 +13,7 @@ public class EntityManagerHandler implements InvocationHandler {
         this.entityManagerFactory = entityManagerFactory;
     }
 
-    public void preAction() throws Throwable {
+    private void preAction() throws Throwable {
         System.out.println("----------EntityManagerHandler: 실제 객체의 메서드 호출 전 작업 수행----------");
         if (entityManager == null) {
             System.out.println("--------->새로운 EntityManger 구현체 생성");
@@ -23,7 +23,7 @@ public class EntityManagerHandler implements InvocationHandler {
         }
     }
 
-    public void postAction() {
+    private void postAction() {
         System.out.println("----------EntityManagerHandler: 실제 객체의 메서드 호출 후 작업 수행----------");
         System.out.println("--------->없음");
     }
@@ -33,7 +33,7 @@ public class EntityManagerHandler implements InvocationHandler {
         preAction();
         System.out.println("----------EntityManagerHandler: 실제 객체의 메서드 호출----------");
         Object result = method.invoke(entityManager, args); // 메서드 실행 결과를 result 변수에 저장
-        if (method.getName().equals("close")) {
+        if (method.getName().equals("clear")) {
             entityManager = null;
         }
         postAction();

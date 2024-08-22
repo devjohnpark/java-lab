@@ -7,6 +7,7 @@ public class EntityTransactionImpl implements EntityTransaction {
 
     private final Connection connection;
     private boolean active;
+    private boolean isAutoRollback = true;
 
     public EntityTransactionImpl(Connection connection) {
         this.connection = connection;
@@ -16,23 +17,24 @@ public class EntityTransactionImpl implements EntityTransaction {
         System.out.println("=========>Transaction started");
         try {
             connection.setAutoCommit(false);
+            active = true;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        active = true;
     }
 
-    public void commit() throws RuntimeException {
+    public void commit() {
         if (active) {
             System.out.println("=========>Transaction committed");
             try {
                 connection.commit();
+                active = false;
             } catch (SQLException e) {
-                throw new RuntimeException(e);
+                if (isAutoRollback) { rollback(); }
+                else { throw new RuntimeException(e); }
             } finally {
                 resetAutoCommit();
             }
-            active = false;
         }
     }
 
@@ -41,12 +43,10 @@ public class EntityTransactionImpl implements EntityTransaction {
             System.out.println("=========>Transaction rolled back");
             try {
                 connection.rollback();
+                active = false;
             } catch (SQLException e) {
                 throw new RuntimeException(e);
-            } finally {
-                resetAutoCommit();
             }
-            active = false;
         }
     }
 
@@ -61,12 +61,12 @@ public class EntityTransactionImpl implements EntityTransaction {
     }
 
     private void closeConnection() {
+        System.out.println("=========>Close DB Connection");
         try {
             connection.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        System.out.println("=========>Close DB Connection");
     }
 
     public boolean isActive() {

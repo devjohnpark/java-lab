@@ -19,6 +19,10 @@ public class ConnectionProvider {
     }
 
     public Connection getConnection() throws SQLException {
-        return DriverManager.getConnection(url, username, password);
+        try {
+            return DriverManager.getConnection(url, username, password);
+        } catch (SQLException e) {
+            throw e;
+        }
     }
 }

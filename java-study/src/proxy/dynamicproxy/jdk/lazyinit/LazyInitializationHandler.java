@@ -1,6 +1,7 @@
 package proxy.dynamicproxy.jdk.lazyinit;
 
 import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 public class LazyInitializationHandler implements InvocationHandler {
@@ -18,11 +19,27 @@ public class LazyInitializationHandler implements InvocationHandler {
         if (realObject == null) {
             realObject = realObjectClass.getDeclaredConstructor().newInstance();
             System.out.println("새로운 EntityManger 구현체 생성");
+        } else {
+            System.out.println("기존 EntityManger 구현체 사용");
         }
     }
 
     public void postAction() {
         System.out.println("[실제 객체의 메서드 호출 후 작업 수행]");
+    }
+
+    public Object interAction(Method method, Object[] args) {
+        System.out.println("[실제 객체의 메서드 호출]");
+        Object result = null;
+        try {
+            result = method.invoke(realObject, args);
+        } catch (IllegalAccessException | InvocationTargetException e) {
+            throw new RuntimeException(e);
+        }
+        if (method.getName().equals("clear")) {
+            realObject = null;
+        }
+        return result;
     }
 
     // 프록시 객체는 EntityManager의 모든 메서드가 호출될 때마다 LazyInitializationHandler(InvocationHandler)의 invoke 메서드가 실행된다.
@@ -35,8 +52,7 @@ public class LazyInitializationHandler implements InvocationHandler {
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         preAction();
-        System.out.println("[실제 객체의 메서드 호출]");
-        Object result = method.invoke(realObject, args); // 메서드 실행 결과를 result 변수에 저장
+        Object result = interAction(method, args); // 메서드 실행 결과를 result 변수에 저장
         postAction();
         return result; // realEntityManager 객체의 메서드 실행 결과 반환
     }

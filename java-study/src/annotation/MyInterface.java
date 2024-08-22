@@ -1,0 +1,4 @@
+package annotation;
+
+interface MyInterface {
+}

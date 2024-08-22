@@ -21,8 +21,8 @@ public class RealEntityManager implements EntityManager {
 
     @Override
     public void clear() {
-        System.out.println("EntityManager 닫기");
-        // persistent 상태의 entity를 비우고 모든 entity를 detached 상태로 변경한다.
+        System.out.println("Persistent Context에서 EntityManager 소멸");
+        // persistent context에서 entity를 비우고 모든 entity를 detached 상태로 변경한다.
     }
 }
 

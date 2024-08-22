@@ -12,7 +12,7 @@ public class EntityManagerImpl implements EntityManager {
         this.connectionProvider = connectionProvider;
     }
 
-    public EntityTransaction getTransaction() {
+    public EntityTransaction getTransaction() throws RuntimeException {
         System.out.println("--------->getTransaction 메서드의 실제 로직 수행");
         if (this.transaction == null || !this.transaction.isActive()) {
             try {
@@ -46,8 +46,13 @@ public class EntityManagerImpl implements EntityManager {
     @Override
     public void close() {
         transaction = null;
-        System.out.println("--------->EntityManager has been closed.");
+        System.out.println("--------->EntityManager has been closed the database connection.");
         // persistent 상태의 entity를 비우고 모든 entity를 detached 상태로 변경한다.
+    }
+
+    @Override
+    public void clear() {
+        System.out.println("--------->EntityManager has been cleared in persistence context.");
     }
 }
 

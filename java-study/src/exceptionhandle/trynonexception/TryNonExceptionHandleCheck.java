@@ -6,7 +6,7 @@ class TryNonExceptionHandleCheck {
         try {
             generateException();
         } catch (ArithmeticException e) {
-            System.out.println("Main - Arithmetic Exception");
+            System.out.println("AnnotationTest - Arithmetic Exception");
             e.printStackTrace();
         }
 

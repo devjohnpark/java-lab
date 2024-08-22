@@ -1,6 +1,5 @@
 package proxy.dynamicproxy.gglib.transactional;
 
-
 class MemberService {
 //    private final MemberRepository memberRepository = new MemoryMemberRepository();
 
