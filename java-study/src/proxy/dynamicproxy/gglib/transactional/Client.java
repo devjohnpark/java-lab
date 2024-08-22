@@ -32,5 +32,7 @@ public class Client {
         member2.setId(2L);
         member2.setName("john park");
         proxyMemberService.join(member2);
+
+        emf.closeAllEntityManagers();
     }
 }

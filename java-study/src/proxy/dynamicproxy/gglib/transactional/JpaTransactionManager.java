@@ -4,9 +4,10 @@ package proxy.dynamicproxy.gglib.transactional;
 public class JpaTransactionManager {
 
     private final EntityManagerFactory entityManagerFactory;
-    private EntityManager entityManagerInit; // EntityManager 프록시 객체
+    private EntityManager proxyEntityManager; // EntityManager 프록시 객체
     private EntityTransaction transaction;
     private final EntityManagerHandler entityManagerHandler;
+    private boolean isAutoRollback = true;
 
     public JpaTransactionManager(EntityManagerFactory entityManagerFactory) {
         this.entityManagerFactory = entityManagerFactory;
@@ -14,17 +15,24 @@ public class JpaTransactionManager {
     }
 
     public EntityManager initProxyEntityManager() {
-        return entityManagerInit = JdkDynamicProxyFactory.createProxy(EntityManager.class, entityManagerHandler);
+        return proxyEntityManager = JdkDynamicProxyFactory.createProxy(EntityManager.class, entityManagerHandler);
     }
 
     public void beginTransaction() {
-        transaction = entityManagerInit.getTransaction();
+        transaction = proxyEntityManager.getTransaction();
         transaction.begin();
     }
 
     public void commitTransaction() {
         if (transaction.isActive()) {
-            transaction.commit();
+            try {
+                transaction.commit();
+            } catch (RuntimeException e) {
+                if (isAutoRollback) { rollbackTransaction(); }
+                else { throw e; }
+            } finally {
+                closeEntityManager();
+            }
         }
     }
 
@@ -35,9 +43,9 @@ public class JpaTransactionManager {
     }
 
     public void closeEntityManager() {
-        if (entityManagerInit != null) {
-            entityManagerInit.clear();
-            entityManagerInit.close();
+        if (proxyEntityManager != null) {
+            proxyEntityManager.close();
+            proxyEntityManager.clear();
         }
     }
 }

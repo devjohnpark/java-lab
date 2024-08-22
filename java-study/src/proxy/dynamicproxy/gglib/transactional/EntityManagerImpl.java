@@ -5,11 +5,11 @@ import java.sql.SQLException;
 
 public class EntityManagerImpl implements EntityManager {
 
-    private final ConnectionProvider connectionProvider;
+    private final SimpleConnectionPool dataSource;
     private EntityTransactionImpl transaction;
 
-    public EntityManagerImpl(ConnectionProvider connectionProvider) {
-        this.connectionProvider = connectionProvider;
+    public EntityManagerImpl(SimpleConnectionPool dataSource) {
+        this.dataSource = dataSource;
     }
 
     public EntityTransaction getTransaction() throws RuntimeException {
@@ -17,13 +17,20 @@ public class EntityManagerImpl implements EntityManager {
         if (this.transaction == null || !this.transaction.isActive()) {
             try {
                 // 트랜잭션 생성시, Connection 확보하고 트랜잭션이 종료되면 반환
-                Connection connection = connectionProvider.getConnection();
+                Connection connection = dataSource.getConnection();
                 this.transaction = new EntityTransactionImpl(connection);
             } catch (SQLException e) {
                 throw new RuntimeException("Failed to create a new transaction due to a database error.", e);
             }
         }
         return this.transaction;
+
+//        try {
+//            // 트랜잭션 생성시, Connection 확보하고 트랜잭션이 종료되면 반환
+//            return new EntityTransactionImpl(dataSource.getConnection());
+//        } catch (SQLException e) {
+//            throw new RuntimeException("Failed to create a new transaction due to a database error.", e);
+//        }
     }
 
     @Override
@@ -45,6 +52,7 @@ public class EntityManagerImpl implements EntityManager {
 
     @Override
     public void close() {
+        dataSource.releaseConnection(transaction.retrieveConnection());
         transaction = null;
         System.out.println("--------->EntityManager has been closed the database connection.");
         // persistent 상태의 entity를 비우고 모든 entity를 detached 상태로 변경한다.

@@ -23,47 +23,23 @@ public class EntityTransactionImpl implements EntityTransaction {
         }
     }
 
-    public void commit() {
-        if (active) {
-            System.out.println("=========>Transaction committed");
-            try {
-                connection.commit();
-                active = false;
-            } catch (SQLException e) {
-                if (isAutoRollback) { rollback(); }
-                else { throw new RuntimeException(e); }
-            } finally {
-                resetAutoCommit();
-            }
-        }
-    }
-
-    public void rollback() {
-        if (active) {
-            System.out.println("=========>Transaction rolled back");
-            try {
-                connection.rollback();
-                active = false;
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            }
-        }
-    }
-
-    private void resetAutoCommit() {
-        System.out.println("=========>Reset Auto Commit");
+    public void commit() throws RuntimeException {
+        System.out.println("=========>Transaction committed");
         try {
+            connection.commit();
             connection.setAutoCommit(true);
-            closeConnection();
+            active = false;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
 
-    private void closeConnection() {
-        System.out.println("=========>Close DB Connection");
+    public void rollback() {
+        System.out.println("=========>Transaction rolled back");
         try {
-            connection.close();
+            connection.rollback();
+            connection.setAutoCommit(true);
+            active = false;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -72,4 +48,19 @@ public class EntityTransactionImpl implements EntityTransaction {
     public boolean isActive() {
         return active;
     }
+
+    public Connection retrieveConnection() {
+        System.out.println("=========>Retreive DB Connection");
+        return connection;
+    }
+
+//    private void closeConnection() {
+//        System.out.println("=========>Close DB Connection");
+//        try {
+//            connection.close();
+//        } catch (SQLException e) {
+//            throw new RuntimeException(e);
+//        }
+//    }
+
 }

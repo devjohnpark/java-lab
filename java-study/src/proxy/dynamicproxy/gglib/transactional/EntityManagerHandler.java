@@ -23,7 +23,7 @@ public class EntityManagerHandler implements InvocationHandler {
         }
     }
 
-    private void postAction() {
+    private void postAction(Method method) {
         System.out.println("----------EntityManagerHandler: 실제 객체의 메서드 호출 후 작업 수행----------");
         System.out.println("--------->없음");
     }
@@ -36,7 +36,7 @@ public class EntityManagerHandler implements InvocationHandler {
         if (method.getName().equals("clear")) {
             entityManager = null;
         }
-        postAction();
+        postAction(method);
         return result; // 메서드 실행 결과 반환
     }
 }

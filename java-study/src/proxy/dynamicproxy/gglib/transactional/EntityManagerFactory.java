@@ -4,7 +4,8 @@ package proxy.dynamicproxy.gglib.transactional;
 public class EntityManagerFactory {
 
     private static EntityManagerFactory instance;
-    private final ConnectionProvider connectionProvider = new ConnectionProvider("jdbc:h2:tcp://localhost/~/test", "sa", null);
+//    private final ConnectionProvider connectionProvider = new ConnectionProvider("jdbc:h2:tcp://localhost/~/test", "sa", null);
+    private final SimpleConnectionPool dataSource = new SimpleConnectionPool("jdbc:h2:tcp://localhost/~/test", "sa", null, 10);
 
     private EntityManagerFactory() { }
 
@@ -16,7 +17,10 @@ public class EntityManagerFactory {
     }
 
     public EntityManager createEntityManager() {
-        return new EntityManagerImpl(connectionProvider);
+        return new EntityManagerImpl(dataSource);
     }
 
+    public void closeAllEntityManagers() {
+        dataSource.closeAllConnections();
+    }
 }
