@@ -1,21 +1,19 @@
 package proxy.dynamicproxy.gglib.transactional;
 
 // EntityManager에 대한 Transaction 관리
-public class JpaTransactionManager {
+public class JpaEntityTransactionManager {
 
     private final EntityManagerFactory entityManagerFactory;
     private EntityManager proxyEntityManager; // EntityManager 프록시 객체
     private EntityTransaction transaction;
-    private final EntityManagerHandler entityManagerHandler;
     private boolean isAutoRollback = true;
 
-    public JpaTransactionManager(EntityManagerFactory entityManagerFactory) {
+    public JpaEntityTransactionManager(EntityManagerFactory entityManagerFactory) {
         this.entityManagerFactory = entityManagerFactory;
-        this.entityManagerHandler = new EntityManagerHandler(entityManagerFactory);
     }
 
     public EntityManager initProxyEntityManager() {
-        return proxyEntityManager = JdkDynamicProxyFactory.createProxy(EntityManager.class, entityManagerHandler);
+        return proxyEntityManager = JdkDynamicProxyFactory.createProxy(EntityManager.class, new EntityManagerHandler(entityManagerFactory));
     }
 
     public void beginTransaction() {
@@ -47,5 +45,9 @@ public class JpaTransactionManager {
             proxyEntityManager.close();
             proxyEntityManager.clear();
         }
+    }
+
+    public void changeAutRollback(boolean isAutoRollback) {
+        this.isAutoRollback = isAutoRollback;
     }
 }

@@ -54,13 +54,4 @@ public class EntityTransactionImpl implements EntityTransaction {
         return connection;
     }
 
-//    private void closeConnection() {
-//        System.out.println("=========>Close DB Connection");
-//        try {
-//            connection.close();
-//        } catch (SQLException e) {
-//            throw new RuntimeException(e);
-//        }
-//    }
-
 }

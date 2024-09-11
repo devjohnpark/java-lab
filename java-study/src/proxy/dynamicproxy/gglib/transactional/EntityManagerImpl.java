@@ -24,13 +24,6 @@ public class EntityManagerImpl implements EntityManager {
             }
         }
         return this.transaction;
-
-//        try {
-//            // 트랜잭션 생성시, Connection 확보하고 트랜잭션이 종료되면 반환
-//            return new EntityTransactionImpl(dataSource.getConnection());
-//        } catch (SQLException e) {
-//            throw new RuntimeException("Failed to create a new transaction due to a database error.", e);
-//        }
     }
 
     @Override

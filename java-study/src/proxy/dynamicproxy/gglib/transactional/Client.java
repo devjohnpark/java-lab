@@ -4,7 +4,7 @@ public class Client {
     public static void main(String[] args) {
 
         EntityManagerFactory emf = EntityManagerFactory.getInstance();
-        JpaTransactionManager jpaTransactionManager = new JpaTransactionManager(emf);
+        JpaEntityTransactionManager jpaTransactionManager = new JpaEntityTransactionManager(emf);
         EntityManager entityManager = jpaTransactionManager.initProxyEntityManager();
 
         JpaMemberRepository jpaMemberRepository = new JpaMemberRepository(entityManager); // EntityManager 프록시 객체 주입
@@ -18,7 +18,7 @@ public class Client {
                 new Object[]{jpaMemberRepository}        // 서브 클래싱할 객체의 생성자에 전달할 실제 인자 배열
         );
 
-        System.out.println(proxyMemberService.getClass().getSimpleName());
+        System.out.println(proxyMemberService.getClass().getSimpleName() + "\n");
 
         // 비즈니스 로직 실행 1
         Member member1 = new Member();

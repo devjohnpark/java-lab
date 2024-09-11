@@ -9,9 +9,9 @@ import java.lang.reflect.Method;
 public class TransactionalMethodInterceptor implements MethodInterceptor {
 
     private final Object target;
-    private final JpaTransactionManager transactionManager;
+    private final JpaEntityTransactionManager transactionManager;
 
-    public TransactionalMethodInterceptor(JpaTransactionManager transactionManager, Object target) {
+    public TransactionalMethodInterceptor(JpaEntityTransactionManager transactionManager, Object target) {
         this.target = target;
         this.transactionManager = transactionManager;
     }
