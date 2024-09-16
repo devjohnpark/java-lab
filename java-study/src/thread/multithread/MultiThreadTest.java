@@ -30,7 +30,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 class MyThread extends Thread {
     @Override
     public void run() {
-        for (int i = 0; i < 300; i++) {
+        for (int i = 0; i < 500; i++) {
             System.out.printf("%s", "x");
         }
         System.out.println("\n소요시간x:" + (System.currentTimeMillis() - MultiThreadTest.startTime));
@@ -76,7 +76,7 @@ public class MultiThreadTest {
         t1.start();
         monitorThread.start();
 
-        for (int i = 0; i < 300; i++) {
+        for (int i = 0; i < 500; i++) {
             System.out.printf("%s", "o");
         }
         System.out.println("\n소요시간o:" + (System.currentTimeMillis() - startTime));
