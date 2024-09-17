@@ -1,4 +1,4 @@
-package iostream;
+package io.bytestream;
 
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
@@ -6,8 +6,13 @@ import java.io.IOException;
 
 public class FileReadExample {
     public static void main(String[] args) {
+
+        // 현재 루트 경로 확인 (프로젝트 파일의 상위 디렉터리와 동일)
+        System.out.println("Current working directory: " + System.getProperty("user.dir"));
+
         // 파일 경로 설정
-        String filePath = "hello.txt";
+        String rootPath = "io-test/";
+        String filePath = rootPath + "hello.txt";
 
         // FileInputStream을 사용하여 파일을 읽기 위한 스트림을 생성
         try (FileInputStream fileInputStream = new FileInputStream(filePath);
