@@ -32,7 +32,7 @@ public class FlushExample {
         // 버퍼가 있는 출력 스트림 예제
         try (BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(getFileName(1)))) {
             System.out.println("Writing to buffered stream");
-            bos.write("Hello, World!".getBytes()); // 데이터를 버퍼에 씀
+            bos.write("Hello, World!".getBytes()); // 데이터를 버퍼(바이트 배열)에 씀
             System.out.println("Before flush");
             readFileWithBufferedInputStream(getFileName(1));
             System.out.println("After flush");
