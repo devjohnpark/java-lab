@@ -1,4 +1,4 @@
-package io.bytestream;
+package io.bytestream.file;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;

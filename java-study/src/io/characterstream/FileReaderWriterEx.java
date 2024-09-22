@@ -2,7 +2,7 @@ package io.characterstream;
 
 import java.io.*;
 
-public class FileReaderWriterEx1 {
+public class FileReaderWriterEx {
     public static void main(String[] args) {
         String fimeName = "io-test/fileStream.txt";
         String outputData = "Hello는 안녕";

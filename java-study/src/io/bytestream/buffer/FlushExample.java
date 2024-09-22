@@ -1,4 +1,4 @@
-package io.bytestream;
+package io.bytestream.buffer;
 
 import java.io.*;
 import java.nio.file.Files;

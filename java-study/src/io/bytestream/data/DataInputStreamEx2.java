@@ -1,6 +1,4 @@
-package io.bytestream;
-
-import array.Array;
+package io.bytestream.data;
 
 import java.io.*;
 import java.util.Arrays;

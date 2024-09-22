@@ -1,6 +1,4 @@
-package io.bytestream;
-
-import array.Array;
+package io.bytestream.bytearray;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;

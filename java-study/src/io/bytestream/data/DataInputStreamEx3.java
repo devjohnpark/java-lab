@@ -1,7 +1,6 @@
-package io.bytestream;
+package io.bytestream.data;
 
 import java.io.*;
-import java.util.Arrays;
 
 public class DataInputStreamEx3 {
     public static void main(String[] args) {
