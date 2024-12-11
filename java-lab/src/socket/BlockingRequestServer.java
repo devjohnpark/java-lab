@@ -33,6 +33,7 @@ public class BlockingRequestServer {
                     outputStream.write(response1.getBytes());
                     outputStream.flush();
 
+                    clientSocket.setSoTimeout(5000);
                     System.out.println("두번째 요청 기다리기");
                     // 클라이언트의 두 번째 요청을 기다리는 동안 블로킹
                     line = reader.readLine();  // 두 번째 요청도 기다림
